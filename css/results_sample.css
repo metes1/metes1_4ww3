@@ -1,0 +1,91 @@
+/* Styling for content on search page */
+* {
+  box-sizing: border-box;
+}
+
+.results-container {
+  width: 90%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tabular-results {
+  float: left;
+  width: 50%;
+  height: 60vh;
+  overflow: auto;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 2px;
+}
+
+.map-results {
+  width: 50%;
+  height: 60vh;
+  float: left;
+  padding: 10px;
+}
+
+.map-results img {
+  border: 4px solid #1f879c;;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.result-card {
+  width: 100%;
+  height: 20vh;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  float: left;
+  margin-bottom: 5px;
+}
+
+.result-card img {
+  width: 30%;
+  height: 18vh;
+  float: left;
+}
+
+.resultinfo {
+  width: 70%;
+  float: left;
+  padding: 10px;
+}
+
+.checked {
+  color: orange;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+a {
+  color: black;
+}
+
+@media screen and (max-width: 700px) and (max-width: 700px) {
+  .results-container {
+    width: 100%;
+  }
+
+  .tabular-results {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .map-results {
+    width: 100%;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
