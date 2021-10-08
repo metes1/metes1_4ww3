@@ -1,0 +1,78 @@
+/* This stylesheet is used for all the pages, containing styling for common
+elements. */
+
+/* Universal selector, default value.*/
+* {
+  margin: 0;
+  padding: 0;
+  /* includes padding and borders in an element's total height and width */
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  overflow: hidden;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #5F4B8B;
+}
+
+header .material-icons.md-36 {
+  font-size: 100%;
+  padding-right: 20px;
+}
+
+header h1 {
+  float: left;
+  padding-left: 20px;
+}
+
+nav {
+  padding:10px;
+  float: right;
+}
+
+nav a {
+  color: white;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-left: 5px;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #433561;
+}
+
+main {
+  /* assigns any remaining space on the screen to main, 
+     this forces the footer to stay on the very bottom of 
+     even when the content doesn't fully take up the page (prevents the
+     footer from being right under where the content ends)*/
+  flex-grow: 1;
+}
+
+footer {
+  text-align: center;
+  background-color: #5F4B8B;
+  color: white;
+  font-size: 12px;
+  padding: 10px;
+}
+
+
+@media screen and (max-width: 1200px) {
+
+}

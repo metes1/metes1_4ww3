@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/submission.css">
+  <title>Bookshopper - Submit a Location</title>
+</head>
+<body>
+  <header>
+    <!--  Logo and website name -->
+    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
+
+    <!-- Navigation bar -->
+    <nav>
+      <a href="search.html">Search</a>
+      <a href="submission.html">Submit a Location</a>
+      <a id="loginnav" href="">Log In</a>
+      <a id="signupnav" href="registration.html">Sign Up</a>
+    </nav>   
+  </header>
+
+  <!-- Submission form -->
+  <main>
+    <h2>Submit a New Bookstore Location</h2>
+    <hr>
+    <div class="submission-container">
+      <form>
+        <div class="row">
+          <div class="col-25">
+            <label for="name">Name of Bookstore:</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="name" name="name" placeholder="Enter the name of the bookstore..." required>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="desc">Description:</label>
+          </div>
+          <div class="col-75">
+            <textarea id="desc" name="desc" placeholder="Enter a description for the bookstore..."></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="latitude">Latitude:</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="lat" name="lat" placeholder="Ex. 41.40338">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="longitude">Longitude:</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="lon" name="lon" placeholder="Ex. 2.17403">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="image">Upload an Image:</label>
+          </div>
+          <div class="col-75">
+            <input type="file" id="image" name="image">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="video">Upload a Video:</label>
+          </div>
+          <div class="col-75">
+            <input type="file" id="video" name="video">
+          </div>
+        </div>
+        <div class="row">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </main>
+
+    <!-- Footer of webpage -->
+  <footer>
+    <p>Copyright &copy; 2021 Bookshopper.</p>
+  </footer>
+</body>
+</html>

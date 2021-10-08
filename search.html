@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/search.css">
+  <title>Bookshopper - Search</title>
+</head>
+<body>
+  <header>
+    <!--  Logo and website name -->
+    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
+
+    <!-- Navigation bar -->
+    <nav>
+      <a href="search.html">Search</a>
+      <a href="submission.html">Submit a Location</a>
+      <a id="loginnav" href="">Log In</a>
+      <a id="signupnav" href="registration.html">Sign Up</a>
+    </nav>   
+  </header>
+
+  <!-- Search form -->
+  <main>
+    <div class="search-container">
+      <h2>Search for bookstores</h2>
+      <hr>
+      <!-- action is temporary for part 1, works as a link to show results sample page -->
+      <form class="search" action="results_sample.html">
+        <input type="text" placeholder="Search by name or location..." id="search" name="search">
+        <button type="submit"><i class="material-icons md-36">search</i></button>
+        <!-- Star rating search drop down-->
+        <div class="starselect">
+          <label for="star">With a star rating of at least (optional):</label>
+          <select id="star" name="star">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </main>
+
+    <!-- Footer of webpage -->
+  <footer>
+    <p>Copyright &copy; 2021 Bookshopper.</p>
+  </footer>
+</body>
+</html>
