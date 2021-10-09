@@ -29,7 +29,7 @@
 }
 
 .map-results img {
-  border: 4px solid #1f879c;;
+  border: 4px solid #1f879c;
   border-radius: 5px;
   width: 100%;
 }
@@ -37,7 +37,6 @@
 /* Each Individual result */
 .result-card {
   width: 100%;
-
   background-color: white;
   padding: 5px;
   border: 1px solid gray;

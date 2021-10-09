@@ -68,7 +68,7 @@ h2 {
 /* clear the floats after the columns */
 .row:after {
   content: "";
-  display: "table";
+  display: table;
   clear: both;
 }
 
