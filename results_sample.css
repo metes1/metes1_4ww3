@@ -1,0 +1,98 @@
+/* Styling for content on search page */
+* {
+  box-sizing: border-box;
+}
+
+.results-container {
+  width: 90%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* The list of results in tabular form, in its own scrollable div */
+.tabular-results {
+  float: left;
+  width: 50%;
+  height: 60vh;
+  overflow: auto;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 2px;
+}
+
+/* Map takes up the other have of the screen */
+.map-results {
+  width: 50%;
+  height: 60vh;
+  float: left;
+  padding: 10px;
+}
+
+.map-results img {
+  border: 4px solid #1f879c;;
+  border-radius: 5px;
+  width: 100%;
+}
+
+/* Each Individual result */
+.result-card {
+  width: 100%;
+  height: 20vh;
+  background-color: white;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  float: left;
+  margin-bottom: 5px;
+}
+
+.result-card img {
+  width: 30%;
+  height: 18vh;
+  float: left;
+}
+
+.resultinfo {
+  width: 70%;
+  float: left;
+  padding: 10px;
+}
+
+.checked {
+  color: orange;
+}
+
+/* Used to divide different sections */
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Gets rid of the purple hyperlink colouring */
+a {
+  color: black;
+}
+
+/* Tabular results and map are stack on top of one another when screen is small */
+@media screen and (max-width: 700px) and (max-width: 700px) {
+  .results-container {
+    width: 100%;
+  }
+
+  .tabular-results {
+    width: 100%;
+    padding: 0;
+    margin-bottom: 10px;
+  }
+
+  .map-results {
+    width: 100%;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+  }
+}
