@@ -18,7 +18,15 @@
   padding-bottom: 10px;
 }
 
-.mainimage {
+picture .mainimage {
+  float: left;
+  height: 50vh;
+  width: 50%;
+  padding-right: 10px;
+  border-radius: 5px;
+}
+
+img .mainimage {
   float: left;
   height: 50vh;
   width: 50%;
@@ -80,6 +88,7 @@ h2 {
   padding-bottom: 20px;
 }
 
+/* Colors the stars orange */
 .checked {
   color: orange;
 }
@@ -110,8 +119,17 @@ hr {
   padding: 0;
 }
 
+/* When screen is small, elements are expanded to 100% width and stacked on top of each other */
 @media screen and (max-width: 700px) and (max-width: 700px) {
-  .mainimg, .vid {
+  picture .mainimage {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 5px;
+    width: 100%;
+    height: 50vh;
+  }
+
+  img .mainimage {
     padding-right: 0;
     padding-left: 0;
     padding-bottom: 5px;

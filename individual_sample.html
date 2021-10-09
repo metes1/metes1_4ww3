@@ -1,13 +1,35 @@
 <!DOCTYPE html>
+
+<!-- The language code is English -->
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Stylesheets for icons and star rating images -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- CSS files used for this page -->
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/individual_sample.css">
-  <title>Bookshopper - King W. Books</title>
+
+  <!-- The title that will show on the tab on the browser -->
+  <title>Bookshopper</title>
+  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="http://18.222.242.154/home/individual_sample.html">
+  <meta property="og:title" content="Bookshopper">
+  <meta property="og:description" content="Bookshopper is a website where you can search for bookshops as well as read and write reviews for them.">
+
+  <!-- configures website for iOS home screen -->
+  <link rel="apple-touch-icon-precomposed" href="images/icon.png"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 5" />
+
+  <!-- configures website for Android home screen -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="black">
 </head>
 <body>
   <header>
@@ -23,13 +45,28 @@
     </nav>   
   </header>
 
-  <!-- Submission form -->
+  <!-- Main Content of individual object sample page -->
   <main>
     <div class="obj-container" itemscope itemtype="https://schema.org/LocalBusiness">
-      <div class="wrapper">
-        <h1 class="storename" itemprop="name">King W. Books</h1>
-        <img class="mainimage" src="images/kingwestbooks.jpg" alt="bookstore" itemprop= "image">
-        <img class="video" src="images/bookstoreshelves.jpg" alt="shelves of books">
+      <h1 class="heading" itemprop="name">King W. Books</h1>
+        <!-- The pictures of the bookstore -->
+        <div class="image-container">
+          <picture class="mainimage">
+            <!-- When screen width is >= 800px kingwestbooks.jpg is used, 
+                this picture is higher quality (more pixels)
+             -->
+            <source media="(min-width: 800px)" srcset="images/kingwestbooks.jpg">
+            <!-- When screen width is >= 450px kingwestbooksSmall.jpg is used -->
+            <source media="(min-width: 450px)" srcset="images/kingwestbooksSmall.jpg">
+            <!-- img tag is still used as a fallback option (for older browsers) -->
+            <img class="mainimage" src="images/kingwestbooks.jpg" alt="bookstore" itemprop= "image">
+          </picture>
+          <picture class="mainimage">
+            <source media="(min-width: 800px)" srcset="images/bookstoreshelves.jpg">
+            <source media="(min-width: 450px)" srcset="images/bookstoreshelvesSmall.jpg">
+            <img class="mainimage" src="images/bookstoreshelves.jpg" alt="bookstore" itemprop= "mainimage">
+          </picture>
+        </div>
 
         <!-- Contains the description and overall star rating of bookstore -->
         <div class="obj-info">

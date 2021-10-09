@@ -75,7 +75,7 @@ h2 {
 /* Resizes the submission form container to fill the whole width of the
    screen if the screen is small.
 */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 770px) {
   .submission-container {
     width: 100%;
     margin: 0;
