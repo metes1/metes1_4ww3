@@ -1,7 +1,5 @@
-Course name: Web Computing and Web Systems
-
-Group name: metes1_4ww3
-
+Course name: Web Computing and Web Systems <br>
+Group name: metes1_4ww3 <br>
 Member 1: Seda Mete
 
 All page links:
