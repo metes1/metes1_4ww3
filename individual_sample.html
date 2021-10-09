@@ -87,11 +87,17 @@
           <img class="map" src="images/kingwbooksMap.png" alt="map of bookstore">
           <p class="address" itemprop="address" itemscope="https://schema.org/PostalAddress">1060 King St W, Hamilton, ON L8S 1L7</p>
         </div>
-        <hr>
+        <!--The specific video used is just temporary. The controls attribute adds basic video controls such as play, pause, and volume.-->
+        <div class="video">
+          <video controls>
+            <source src="images/bookvideo.mp4" type="video/mp4">
+          </video>
+        </div>
         <div class="reviews">
+          <hr>
           <h2>Reviews</h2>
           <div class="review" itemprop="review" itemscope itemtype="https://schema.org/Review">
-            <h4 itemprop="author">John D.</h4>
+            <p itemprop="author"><b>John D.</b></p>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
@@ -100,7 +106,7 @@
             <p itemprop="reviewBody">I love this bookshop. It has a wide selection of excellent books. The owners are very kind as well</p>
           </div>
           <div class="review" itemprop="review" itemscope itemtype="https://schema.org/Review">
-            <h4 itemprop="author">Emily H.</h4>
+            <p itemprop="author"><b>Emily H.</b></p>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>

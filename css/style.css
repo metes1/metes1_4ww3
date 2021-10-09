@@ -16,7 +16,7 @@ html, body {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  background-color: whitesmoke;
+  background-color: #F0F0F0;
   display: flex;
   flex-direction: column;
 }
