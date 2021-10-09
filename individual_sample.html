@@ -56,9 +56,9 @@
                 this picture is higher quality (more pixels)
              -->
             <source media="(min-width: 800px)" srcset="images/kingwestbooks.jpg">
-            <!-- When screen width is >= 450px kingwestbooksSmall.jpg is used -->
+            <!-- When screen width is >= 450px kingwestbooksSmall.jpg is used, this is a lower resolution -->
             <source media="(min-width: 450px)" srcset="images/kingwestbooksSmall.jpg">
-            <!-- img tag is still used as a fallback option (for older browsers) -->
+            <!-- img tag is used as a fallback option (for older browsers) -->
             <img class="mainimage" src="images/kingwestbooks.jpg" alt="bookstore" itemprop= "image">
           </picture>
           <picture class="mainimage">
@@ -80,8 +80,8 @@
           </div>
           <div itemprop="description"><strong>Decription:</strong> A wonderful little bookshop in Westdale, close to McMaster University.</div>
           <button class="reviewbtn">Write a Review</button>
+          <hr>
         </div>
-        <hr>
         <div class="maplocation">
           <h2>Location</h2>
           <img class="map" src="images/kingwbooksMap.png" alt="map of bookstore">

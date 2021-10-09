@@ -11,16 +11,14 @@
   text-align: left; 
 }
 
-.storename {
+.heading {
   color: black;
   text-align: left;
-  width: 100%;
   padding-bottom: 10px;
 }
 
 picture .mainimage {
   float: left;
-  height: 50vh;
   width: 50%;
   padding-right: 10px;
   border-radius: 5px;
@@ -28,16 +26,8 @@ picture .mainimage {
 
 img .mainimage {
   float: left;
-  height: 50vh;
   width: 50%;
   padding-right: 10px;
-  border-radius: 5px;
-}
-
-.video {
-  float: left;
-  height: 50vh;
-  width:50%;
   border-radius: 5px;
 }
 
@@ -100,33 +90,47 @@ hr {
 
 .maplocation {
   float: left;
-  width: 100%;
+  width: 50%;
   margin-bottom: 20px;
 }
 
-.maplocation p {
-  float: left;
-  width: 100%
-}
 .maplocation img {
-  width: 30%;
-  float: left;
+  width: 100%;
   border: 3px solid gray;
   border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 5px;
   padding: 0;
 }
 
+.video {
+  width:50%;
+  float: left;
+  padding: 70px;
+}
+
+.video video {
+  width: 100%;
+}
+
 /* When screen is small, elements are expanded to 100% width and stacked on top of each other */
-@media screen and (max-width: 700px) and (max-width: 700px) {
+@media screen and (max-width: 700px) {
+  .heading {
+    text-align: center;
+    width: 100%;
+  }
+  .obj-container {
+    width: 95%;
+  }
+
+  .obj-container h2 {
+    text-align: center;
+  }
+
   picture .mainimage {
     padding-right: 0;
     padding-left: 0;
     padding-bottom: 5px;
     width: 100%;
-    height: 50vh;
   }
 
   img .mainimage {
@@ -134,7 +138,6 @@ hr {
     padding-left: 0;
     padding-bottom: 5px;
     width: 100%;
-    height: 50vh;
   }
 
   .reviewbtn {
@@ -142,7 +145,23 @@ hr {
     padding: 20px 20px;
   }
 
+  .maplocation {
+    width: 100%;
+  }
+
   .maplocation img {
+    width: 100%; 
+  }
+
+  .video {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0px 20px 0px;
+
+  }
+
+  .video video {
+    margin: 0;
     width: 100%;
   }
 }

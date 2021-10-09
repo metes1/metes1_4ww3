@@ -27,12 +27,17 @@
     <div class="signup-container">
       <h2>Sign up for Bookshopper</h2>
       <hr>
+      <!-- All inputs are required, user cannot proceed without filling out all
+        input boxes and checking the checkbox -->
       <form>
         <input type="text" placeholder="First Name" id="fname" name="fname" required>
         <input type="text" placeholder="Last Name" id="lname" name="lname" required>
         <input type="email" placeholder="Email" id="email" name="email" required>
         <input type="password" placeholder="Password" required>
         <input type="password" placeholder="Confirm Password" required>
+        <input type="checkbox" id="terms" name="terms" required >
+        <!-- href not properly assigned yet -->
+        <label for="terms">I agree to the <a href="">terms of service</label>
         <input type="submit" value="Sign Up">
       </form>
       <p>Already have an account? <a href="">Log In</a></p>

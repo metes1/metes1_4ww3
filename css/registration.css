@@ -30,11 +30,28 @@
 }
 
 /* Styling for input boxes in the form */
-.signup-container input {
+.signup-container input[type=text] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
-  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-container input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup-container input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -58,7 +75,7 @@
 /* Resizes the sign up form container to fill the whole width of the
    screen if the screen is small.
 */
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .signup-container {
     width: 100%;
     margin: 0;

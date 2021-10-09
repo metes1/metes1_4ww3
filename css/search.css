@@ -12,7 +12,13 @@
 }
 
 .search-container h2 {
-  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+/* Used to separate header from content*/
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .search-container form {
@@ -24,7 +30,7 @@
 }
 
 /* Style the search bar */
-form.search input[type=text] {
+.search input[type=text] {
   padding: 12px;
   font-size: 17px;
   border: 1px solid grey;
@@ -34,7 +40,7 @@ form.search input[type=text] {
 }
 
 /* Style the search button */
-form.search button {
+.search button {
   margin: 0;
   width: 15%;
   padding: 10px;
@@ -47,35 +53,37 @@ form.search button {
   border-radius: 10px;
 }
 
-form.search button:hover {
+.search button:hover {
   background: #155d6b;
 }
 
 /* Style the search icon */
-form.search .material-icons.md-36 {
+.search .material-icons.md-36 {
   font-size: 120%;
   padding: 0;
   margin: 0;
 }
 
+/* Style the dropdown select */
 .starselect {
   margin-top: 20px;
 }
 
-form.search select {
+.search select {
   padding: 10px;
   font-size: 16px;
   border-radius: 5px;
   background: #f1f1f1;
 }
 
-/* Resizes the sign up form container to fill the whole width of the
+/* Resizes the sign up search container to fill the whole width of the
    screen if the screen is small.
 */
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .search-container {
     width: 100%;
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
     padding: 5px;
   }
 
@@ -88,27 +96,32 @@ form.search select {
   }
 
   /* Use order to control the order in which the elements stack */
-  form.search input[type="text"] {
+  .search input[type="text"] {
     width: 100%;
+    padding: 24px;
     order: 1;
   }
 
-  form.search button {
-    margin-top: 15px;
+  .search button {
+    margin-top: 50px;
     width: 100%;
     order: 3;
   }
 
   /* Style the search icon */
-  form.search .material-icons.md-36 {
+  .search .material-icons.md-36 {
     font-size: 250%;
     padding: 0;
     margin: 0;
   }
 
   .starselect {
-    margin-top: 15px;
+    margin-top: 50px;
     width: 100%;
     order: 2;
+  }
+
+  .search select {
+    padding: 14px;
   }
 }
