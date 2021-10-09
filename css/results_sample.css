@@ -10,6 +10,7 @@
   margin-right: auto;
 }
 
+/* The list of results in tabular form, in its own scrollable div */
 .tabular-results {
   float: left;
   width: 50%;
@@ -20,6 +21,7 @@
   padding: 2px;
 }
 
+/* Map takes up the other have of the screen */
 .map-results {
   width: 50%;
   height: 60vh;
@@ -33,6 +35,7 @@
   width: 100%;
 }
 
+/* Each Individual result */
 .result-card {
   width: 100%;
   height: 20vh;
@@ -60,15 +63,19 @@
   color: orange;
 }
 
+/* Used to divide different sections */
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
+  width: 100%;
 }
 
+/* Gets rid of the purple hyperlink colouring */
 a {
   color: black;
 }
 
+/* Tabular results and map are stack on top of one another when screen is small */
 @media screen and (max-width: 700px) and (max-width: 700px) {
   .results-container {
     width: 100%;

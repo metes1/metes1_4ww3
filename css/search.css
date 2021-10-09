@@ -87,6 +87,7 @@ form.search select {
     flex-direction: column;
   }
 
+  /* Use order to control the order in which the elements stack */
   form.search input[type="text"] {
     width: 100%;
     order: 1;
