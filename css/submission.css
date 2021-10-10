@@ -1,8 +1,12 @@
+/* Styling for Submission page */
+
+
+/* Includes padding and borders in an element's total height and width */
 * {
   box-sizing: border-box;
 }
 
-/* Styling for content on submission page */
+/* Horizontally entered */
 .submission-container {
   border-radius: 10px;
   width: 80%;
@@ -11,7 +15,7 @@
   padding: 30px;
 }
 
-/* horizontally center header */
+/* Horizontally centers header */
 h2 {
   border-radius: 10px;
   margin-left: auto;

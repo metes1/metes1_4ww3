@@ -1,4 +1,6 @@
 /* Styling for content on search page */
+
+/* Main content container */
 .search-container {
   border-radius: 10px;
   text-align: center;
@@ -15,12 +17,13 @@
   padding-top: 10px;
 }
 
-/* Used to separate header from content*/
+/* Used to separate header from content */
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
+/* Search form is horizontally centered on page */
 .search-container form {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -53,18 +56,19 @@ hr {
   border-radius: 10px;
 }
 
+/* Button gets darker when cursor hovers over it */
 .search button:hover {
   background: #155d6b;
 }
 
-/* Style the search icon */
+/* Style the search icon, make symbol extra large */
 .search .material-icons.md-36 {
   font-size: 120%;
   padding: 0;
   margin: 0;
 }
 
-/* Style the dropdown select */
+/* Style the dropdown select position */
 .starselect {
   margin-top: 20px;
 }
@@ -87,6 +91,7 @@ hr {
     padding: 5px;
   }
 
+  /* Form takes up whole width, elements will stack in column form */
   .search-container form {
     width: 100%;
     margin: 0;
@@ -108,7 +113,7 @@ hr {
     order: 3;
   }
 
-  /* Style the search icon */
+  /* Style the search icon, extra larger symbol size */
   .search .material-icons.md-36 {
     font-size: 250%;
     padding: 0;

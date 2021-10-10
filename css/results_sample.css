@@ -1,8 +1,11 @@
-/* Styling for content on search page */
+/* Styling for content on results sample page */
+
+/* Includes padding and borders in an element's total height and width */
 * {
   box-sizing: border-box;
 }
 
+/* Container for main content, centered */
 .results-container {
   width: 90%;
   margin-top: 20px;
@@ -10,7 +13,7 @@
   margin-right: auto;
 }
 
-/* The list of results in tabular form, in its own scrollable div */
+/* The list of results, in its own scrollable container */
 .tabular-results {
   float: left;
   width: 50%;
@@ -34,7 +37,7 @@
   width: 100%;
 }
 
-/* Each Individual result */
+/* Each individual result, takes up 100% of scrollable container */
 .result-card {
   width: 100%;
   background-color: white;
@@ -57,12 +60,12 @@
   padding: 10px;
 }
 
-/* colour star icons that are checked */
+/* Colour star icons that are checked */
 .checked {
   color: orange;
 }
 
-/* Used to as a visually divider for different sections */
+/* Used to as a visual divider for different sections */
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -91,6 +94,7 @@ a {
     padding: 0;
   }
 
+  /* Centers header */
   h2 {
     text-align: center;
   }

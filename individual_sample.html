@@ -31,13 +31,13 @@
   <meta property="twitter:description" content="A wonderful little bookshop in Westdale, close to McMaster University.">
   <meta property="twitter:image" content="http://18.222.242.154/home/images/kingwestbooks.jpg">
 
-  <!-- configures website for iOS home screen -->
+  <!-- Configures website for iOS home screen -->
   <link rel="apple-touch-icon-precomposed" href="images/icon.png"/>
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 5" />
 
-  <!-- configures website for Android home screen -->
+  <!-- Configures website for Android home screen -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="black">
 </head>
@@ -55,11 +55,11 @@
     </nav>   
   </header>
 
-  <!-- Main Content of individual object sample page -->
+  <!-- Main Content of individual object page -->
   <main>
     <div class="obj-container" itemscope itemtype="https://schema.org/BookStore">
       <h1 class="heading" itemprop="name">King W. Books</h1>
-      <!-- The pictures of the bookstore -->
+      <!-- Images of the bookstore -->
       <div class="image-container">
         <picture class="mainimage">
           <!-- When screen width is >= 800px kingwestbooks.jpg is used, this picture is higher quality (more pixels) -->
@@ -94,20 +94,27 @@
         <button class="reviewbtn">Write a Review</button>
         <hr>
       </div>
+
+      <!-- Section containg the map and address -->
       <div class="maplocation" itemscope itemtype="https://schema.org/Place">
         <h2>Location</h2>
+        <!-- Map is temporarily an image for now -->
         <img class="map" src="images/kingwbooksMap.png" alt="map of bookstore">
         <p class="address" itemprop="address" itemscope="https://schema.org/PostalAddress">1060 King St W, Hamilton, ON L8S 1L7</p>
       </div>
+
       <!--The specific video used is just temporary. The controls attribute adds basic video controls such as play, pause, and volume.-->
       <div class="video">
         <video controls>
           <source src="images/bookvideo.mp4" type="video/mp4">
         </video>
       </div>
+
+      <!-- Review section -->
       <div class="reviews">
         <hr>
         <h2>Reviews</h2>
+        <!-- Individual review -->
         <div class="review" itemscope itemtype="https://schema.org/Review">
           <p itemprop="author"><b>John D.</b></p>
           <span class="fa fa-star checked"></span>
@@ -118,6 +125,7 @@
           <meta itemprop="reviewRating" content="4">
           <p itemprop="reviewBody">I love this bookshop. It has a wide selection of excellent books. The owners are very kind as well</p>
         </div>
+        <!-- Individual review -->
         <div class="review" itemscope itemtype="https://schema.org/Review">
           <p itemprop="author"><b>Emily H.</b></p>
           <span class="fa fa-star checked"></span>

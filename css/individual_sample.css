@@ -1,8 +1,11 @@
-/* Styling for content on object page */
+/* Styling for content on individual sample page */
+
 * {
+  /* Includes padding and borders in an element's total height and width */
   box-sizing: border-box;
 }
 
+/* Main content of page takes up 90% of the page, centered, margins auto filled */
 .obj-container {
   width: 90%;
   margin-top: 20px;
@@ -17,6 +20,7 @@
   padding-bottom: 10px;
 }
 
+/* Image takes up half of the width of obj-container */
 picture .mainimage {
   float: left;
   width: 50%;
@@ -24,6 +28,7 @@ picture .mainimage {
   border-radius: 5px;
 }
 
+/* Image takes up half of the width of obj-container */
 img .mainimage {
   float: left;
   width: 50%;
@@ -51,14 +56,17 @@ img .mainimage {
   font-size: 100%;
 }
 
+/* Button goes darker in colour when cursor hovers over */
 .reviewbtn:hover {
   background-color: #155d6b;
 }
 
+/* Main heading of page */
 h2 {
   padding-bottom: 20px;
 }
 
+/* Reviews take up the entire width of the container */ 
 .reviews {
   width: 100%;
   float: left;
@@ -78,22 +86,25 @@ h2 {
   padding-bottom: 20px;
 }
 
-/* Colors the stars orange */
+/* Colors the star images orange */
 .checked {
   color: orange;
 }
 
+/* Used as a visually divider to put space between sections */ 
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
+/* Map container takes up 50% of the section */
 .maplocation {
   float: left;
   width: 50%;
   margin-bottom: 20px;
 }
 
+/* Map image takes up 100% of the .maplocation */
 .maplocation img {
   width: 100%;
   border: 3px solid gray;
@@ -102,6 +113,7 @@ hr {
   padding: 0;
 }
 
+/* Video container takes up half of the width of the section, placed beside map container */
 .video {
   width:50%;
   float: left;
@@ -122,10 +134,12 @@ hr {
     width: 95%;
   }
 
+  /* Header is centered */
   .obj-container h2 {
     text-align: center;
   }
 
+  /* Image expanded to 100% of the obj-container space */
   picture .mainimage {
     padding-right: 0;
     padding-left: 0;
@@ -140,26 +154,30 @@ hr {
     width: 100%;
   }
 
+  /* Button expanded to 100% of the obj-container space */
   .reviewbtn {
     width: 100%;
     padding: 20px 20px;
   }
 
+  /* Expanded to 100% of the obj-container space */
   .maplocation {
     width: 100%;
   }
 
+  /* Expanded to 100% of the obj-container space */
   .maplocation img {
     width: 100%; 
   }
 
+  /* Expanded to 100% of the obj-container space */
   .video {
     width: 100%;
     margin: 0;
     padding: 20px 0px 20px 0px;
 
   }
-
+  /* Expanded to 100% of the obj-container space */
   .video video {
     margin: 0;
     width: 100%;

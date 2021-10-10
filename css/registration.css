@@ -1,4 +1,6 @@
 /* Styling for content on registration page */
+
+/* Main content is centered and takes up on 40% of the screen width */
 .signup-container {
   border-radius: 10px;
   text-align: center;
@@ -15,12 +17,12 @@
   padding-bottom: 10px;
 }
 
-/* removes underline in hyperlink */
+/* Removes underline in hyperlink */
 .signup-container a {
   text-decoration: none;
 }
 
-/* Underlines Log In hyperlink when hovered over to indicate that it is clickable. */
+/* Underlines Log In hyperlink when hovered over to indicate that it is clickable */
 .signup-container a:hover {
   text-decoration: underline;
 }
