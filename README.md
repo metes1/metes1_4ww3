@@ -8,3 +8,7 @@ All page links:
 3. http://18.222.242.154/home/results_sample.html
 4. http://18.222.242.154/home/individual_sample.html
 5. http://18.222.242.154/home/submission.html
+
+
+README.txt contains the answers to Add-On Task 2 and the additional notes to marker.<br>
+This README file does not contain those things.

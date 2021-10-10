@@ -16,10 +16,20 @@
 
   <!-- The title that will show on the tab on the browser -->
   <title>Bookshopper</title>
-  <meta name="twitter:card" content="summary">
+
+  <!-- Facebook’s Open Graph Protocol -->
+  <meta property="og:title" content="King W. Books">
+  <meta property="og:type" content="Website">
+  <meta property="og:site_name" content="Bookshopper">
   <meta property="og:url" content="http://18.222.242.154/home/individual_sample.html">
-  <meta property="og:title" content="Bookshopper">
-  <meta property="og:description" content="Bookshopper is a website where you can search for bookshops as well as read and write reviews for them.">
+  <meta property="og:image" content="http://18.222.242.154/home/images/kingwestbooks.jpg">
+  <meta property="og:description" content="A wonderful little bookshop in Westdale, close to McMaster University.">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="King W. Books">
+  <meta property="twitter:description" content="A wonderful little bookshop in Westdale, close to McMaster University.">
+  <meta property="twitter:image" content="http://18.222.242.154/home/images/kingwestbooks.jpg">
 
   <!-- configures website for iOS home screen -->
   <link rel="apple-touch-icon-precomposed" href="images/icon.png"/>
@@ -47,7 +57,7 @@
 
   <!-- Main Content of individual object sample page -->
   <main>
-    <div class="obj-container" itemscope itemtype="https://schema.org/LocalBusiness">
+    <div class="obj-container" itemscope itemtype="https://schema.org/BookStore">
       <h1 class="heading" itemprop="name">King W. Books</h1>
       <!-- The pictures of the bookstore -->
       <div class="image-container">
@@ -57,32 +67,34 @@
           <!-- When screen width is >= 450px kingwestbooksSmall.jpg is used, this is a lower resolution -->
           <source media="(min-width: 450px)" srcset="images/kingwestbooksSmall.jpg">
           <!-- img tag is used as a fallback option (for older browsers) -->
-          <img class="mainimage" src="images/kingwestbooks.jpg" alt="bookstore" itemprop= "image">
+          <img class="mainimage" src="images/kingwestbooks.jpg" alt="bookstore" itemprop="photo">
         </picture>
         <picture class="mainimage">
           <source media="(min-width: 800px)" srcset="images/bookstoreshelves.jpg">
           <source media="(min-width: 450px)" srcset="images/bookstoreshelvesSmall.jpg">
-          <img class="mainimage" src="images/bookstoreshelves.jpg" alt="bookstore" itemprop= "mainimage">
+          <img class="mainimage" src="images/bookstoreshelves.jpg" alt="bookstore" itemprop="photo">
         </picture>
       </div>
 
       <!-- Contains the description and overall star rating of bookstore -->
       <div class="obj-info">
-        <div class="starrating" itemprop itemtype="https://schema.org/AggregateRating">
+        <div class="starrating" itemscope itemtype="https://schema.org/AggregateRating">
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star-half-o checked"></span>
           <span class="fa fa-star-o checked"></span>
-          <span itemprop="reviewCount">2 Reviews</span>
+          <span>2 Reviews</span>
+          <meta itemprop="ratingCount" content="2">
+          <meta itemprop="reviewCount" content="2">
         </div>
         <div itemprop="description">
-          <strong>Decription:</strong> A wonderful little bookshop in Westdale, close to McMaster University.
+          <p><strong>Decription:</strong> A wonderful little bookshop in Westdale, close to McMaster University.</p>
         </div>
         <button class="reviewbtn">Write a Review</button>
         <hr>
       </div>
-      <div class="maplocation">
+      <div class="maplocation" itemscope itemtype="https://schema.org/Place">
         <h2>Location</h2>
         <img class="map" src="images/kingwbooksMap.png" alt="map of bookstore">
         <p class="address" itemprop="address" itemscope="https://schema.org/PostalAddress">1060 King St W, Hamilton, ON L8S 1L7</p>
@@ -96,22 +108,24 @@
       <div class="reviews">
         <hr>
         <h2>Reviews</h2>
-        <div class="review" itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <div class="review" itemscope itemtype="https://schema.org/Review">
           <p itemprop="author"><b>John D.</b></p>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
+          <meta itemprop="reviewRating" content="4">
           <p itemprop="reviewBody">I love this bookshop. It has a wide selection of excellent books. The owners are very kind as well</p>
         </div>
-        <div class="review" itemprop="review" itemscope itemtype="https://schema.org/Review">
+        <div class="review" itemscope itemtype="https://schema.org/Review">
           <p itemprop="author"><b>Emily H.</b></p>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star"></span>
           <span class="fa fa-star"></span>
+          <meta itemprop="reviewRating" content="3">
           <p itemprop="reviewBody">I couldn't find the book I was looking for here. Still a nice shop though.</p>
         </div>
       </div>

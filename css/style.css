@@ -9,6 +9,7 @@ elements. */
   box-sizing: border-box;
 }
 
+/* Website should take up the entire screen */
 html, body {
   width: 100%;
   min-height: 100vh;
@@ -29,6 +30,7 @@ header {
   background-color: #5F4B8B;
 }
 
+/* Website logo */
 header .material-icons.md-36 {
   font-size: 100%;
   padding-right: 20px;
@@ -39,6 +41,7 @@ header h1 {
   padding-left: 20px;
 }
 
+/* navigation section is on the right*/
 nav {
   padding:10px;
   float: right;
@@ -52,6 +55,7 @@ nav a {
   text-decoration: none;
 }
 
+/* Navigation buttons highlight when mouse hovers over */ 
 nav a:hover {
   background-color: #433561;
 }
@@ -72,7 +76,7 @@ footer {
   padding: 10px;
 }
 
-
+/* navigation is place underneath website title when screen is smaller */
 @media screen and (max-width: 750px) {
   header {
     font-size: 90%;
