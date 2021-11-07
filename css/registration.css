@@ -1,9 +1,13 @@
 /* Styling for content on registration page */
 
+/* Includes padding and borders in an element's total height and width */
+* {
+  box-sizing: border-box;
+}
+
 /* Main content is centered and takes up on 40% of the screen width */
 .signup-container {
   border-radius: 10px;
-  text-align: center;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
@@ -14,6 +18,7 @@
 }
 
 .signup-container h2 {
+  text-align: center;
   padding-bottom: 10px;
 }
 
@@ -27,37 +32,47 @@
   text-decoration: underline;
 }
 
+.signup-container p {
+  text-align: center;
+}
+
 .signup-container form {
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
+/* Puts space between the form elements */
+.formItem {
+  margin-bottom: 12px;
+}
+
+#checkTerms {
+  text-align: center;
+}
+
 /* Styling for input boxes in the form */
 .signup-container input[type=text] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+  margin-top: 5px;
 }
 
 .signup-container input[type=email] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+  margin-top: 5px;
 }
 
 .signup-container input[type=password] {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 12px 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
+  margin-top: 5px;
 }
 
 /*Styling for Sign Up button in form*/
@@ -66,14 +81,22 @@
   background-color: #1f879c;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
+  margin: 20px 0;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 100%;
 }
 
 /* Submit button gets darker when cursor hovers over it */
 .signup-container input[type=submit]:hover {
   background-color: #155d6b;
+}
+
+/* Styling for error messages*/
+.error {
+  font-size: small;
+  color: red;
 }
 
 /* Resizes the sign up form container to fill the whole width of the
@@ -84,5 +107,11 @@
     width: 100%;
     margin: 0;
     padding: 10px;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 701px){
+  .signup-container {
+    width: 70%;
   }
 }

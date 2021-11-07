@@ -6,19 +6,36 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/registration.css">
+  <script src="./js/registration.js"></script>
   <title>Bookshopper - Sign Up</title>
 </head>
 <body>
-  <header>
-    <!--  Logo and website name -->
-    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
-
+  <header class="header">
     <!-- Navigation bar -->
-    <nav>
-      <a href="search.html">Search</a>
-      <a href="submission.html">Submit a Location</a>
-      <a id="loginnav" href="">Log In</a>
-      <a id="signupnav" href="registration.html">Sign Up</a>
+    <nav class="navbar">
+      <!--  Logo and website name -->
+      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
+      <!-- Navigation links -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="search.html" class="nav-link">Search</a>
+        </li>
+        <li class="nav-item">
+          <a href="submission.html" class="nav-link">Submit a Location</a>
+        </li>
+        <li class="nav-item">
+          <a id="loginnav" href="" class="nav-link">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
+        </li>
+      </ul>
+      <!-- Hanburger menu, not displayed unless screen is small enough -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>    
     </nav>   
   </header>
 
@@ -29,15 +46,39 @@
       <hr>
       <!-- All inputs are required, user cannot proceed without filling out all
         input boxes and checking the checkbox -->
-      <form>
-        <input type="text" placeholder="First Name" id="fname" name="fname" required>
-        <input type="text" placeholder="Last Name" id="lname" name="lname" required>
-        <input type="email" placeholder="Email" id="email" name="email" required>
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
-        <input type="checkbox" id="terms" name="terms" required >
-        <!-- href not properly assigned yet -->
-        <label for="terms">I agree to the <a href="registration.html"></a>terms of service</label>
+      <!-- Disable HTML5/CSS automatic validation, will use javascript instead -->
+      <form name="regForm" onsubmit="return validateRegistration(this)" method="post" novalidate>
+        <div class="formItem">
+          <label for="fname">First Name</label>
+          <input type="text" placeholder="Enter your first name" id="fname" name="fname" >
+          <div class="error" id="error-fname"></div>
+        </div>
+        <div class="formItem">
+          <label for="lname">Last Name</label>
+          <input type="text" placeholder="Enter your last name" id="lname" name="lname" >
+          <div class="error" id="error-lname"></div>
+        </div>
+        <div class="formItem">
+          <label for="email">Email</label>
+          <input type="email" placeholder="Enter your email address" id="email" name="email" >
+          <div class="error" id="error-email"></div>
+        </div>
+        <div class="formItem">
+          <label for="password">Password</label>
+          <input type="password" placeholder="Enter your password (must be at least 6 characters)" name="password" id="password" placeholder="Password">
+          <div class="error" id="error-password"></div>
+        </div>
+        <div class="formItem">
+          <label for="passConfirm">Confirm Password</label>
+          <input type="password" placeholder="Re-enter your password" name="passConfirm" id="passConfirm" placeholder="Confirm Password" >
+          <div class="error" id="error-passConfirm"></div>
+        </div>
+        <div id="checkTerms">
+          <input type="checkbox" name="terms" id="terms">
+          <!-- href not properly assigned yet -->
+          <label for="terms">I agree to the <a href="registration.html">terms of service</a></label>
+          <div class="error" id="error-terms"></div>
+        </div>
         <input type="submit" value="Sign Up">
       </form>
       <!-- href not properly assigned -->
@@ -49,5 +90,7 @@
   <footer>
     <p>Copyright &copy; 2021 Bookshopper.</p>
   </footer>
+  <!-- Script for hamburger menu -->
+  <script src="./js/hamburger.js"></script>
 </body>
 </html>

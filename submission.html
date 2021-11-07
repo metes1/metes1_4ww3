@@ -3,22 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/submission.css">
+
+  <!-- Scripts -->
+  <script src="./js/geolocation.js"></script>
+
   <title>Bookshopper - Submit a Location</title>
 </head>
 <body>
-  <header>
-    <!--  Logo and website name -->
-    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
-
+  <header class="header">
     <!-- Navigation bar -->
-    <nav>
-      <a href="search.html">Search</a>
-      <a href="submission.html">Submit a Location</a>
-      <a id="loginnav" href="">Log In</a>
-      <a id="signupnav" href="registration.html">Sign Up</a>
+    <nav class="navbar">
+      <!--  Logo and website name -->
+      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
+      <!-- Navigation links -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="search.html" class="nav-link">Search</a>
+        </li>
+        <li class="nav-item">
+          <a href="submission.html" class="nav-link">Submit a Location</a>
+        </li>
+        <li class="nav-item">
+          <a id="loginnav" href="" class="nav-link">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
+        </li>
+      </ul>
+      <!-- Hanburger menu, not displayed unless screen is small enough -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>    
     </nav>   
   </header>
 
@@ -28,42 +50,63 @@
     <hr>
     <div class="submission-container">
       <!-- Submission form, layed out in two columns (label to the left of input boxes) -->
+      <!-- Informs user that fields marked with a * are required. Hidden from screen readers because they will instead
+           read that a field is required using the required attribute in the input tag
+      -->
+      <p aria-hidden="true"><b>*</b> Required field</p>
       <form>
+        <!-- Client-side form validation added using purely HTML5/CSS -->
         <div class="row">
           <div class="col-25">
-            <label for="name">Name of Bookstore:</label>
+            <!-- Prevents screen reader from reading the star in the label -->
+            <label for="name">Name of Bookstore <b aria-hidden="true">*</b></label>
           </div>
           <div class="col-75">
-            <input type="text" id="name" name="name" placeholder="Enter the name of the bookstore..." required>
+            <!-- Input is required, form cannot be submitted without this value filled, validation performed automatically by browser -->
+            <!-- Length of name restricted to maximum 100 characters -->
+            <input type="text" id="name" name="name" placeholder="Enter the name of the bookstore (max 100 characters)" required maxlength="100">
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="desc">Description:</label>
+            <label for="desc">Description</label>
           </div>
           <div class="col-75">
-            <textarea id="desc" name="desc" placeholder="Enter a description for the bookstore..."></textarea>
+            <!-- Maximum number of characters allowed is 1000 -->
+            <textarea id="desc" name="desc" placeholder="Enter a description for the bookstore (max 1000 characters)" maxlength="1000"></textarea>
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="lat">Latitude:</label>
+            <label for="lat">Latitude <b aria-hidden="true">*</b></label>
           </div>
           <div class="col-75">
-            <input type="text" id="lat" name="lat" placeholder="Ex. 41.40338">
+            <!-- Coordinate input restricted to being numbers only (inlcuding decimal numbers), number range restricted -->
+            <input type="number" id="lat" name="lat" placeholder="Ex. 41.40338" required min="-90" max="90" step="any">
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="lon">Longitude:</label>
+            <label for="lon">Longitude <b aria-hidden="true">*</b></label>
           </div>
           <div class="col-75">
-            <input type="text" id="lon" name="lon" placeholder="Ex. 2.17403">
+            <input type="number" id="lon" name="lon" placeholder="Ex. 2.17403" required min="-180" max="180" step="any">
+          </div>
+        </div>
+        <!-- Row for Use Current Location button -->
+        <div class="row">
+          <!-- No label needed for this row -->
+          <div class="col-25">
+          </div>
+          <div class="col-75">
+            <button type="button" onclick="getLocation()" id="getLocBtn">
+              <i class="material-icons md-24">location_on</i>Use Current Location
+            </button>
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="image">Upload an Image:</label>
+            <label for="image">Upload an Image</label>
           </div>
           <div class="col-75">
             <!-- Specify which types of files can be accepted -->
@@ -72,7 +115,7 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="video">Upload a Video:</label>
+            <label for="video">Upload a Video</label>
           </div>
           <div class="col-75">
             <!-- Specify which types of files can be accepted -->
@@ -90,5 +133,7 @@
   <footer>
     <p>Copyright &copy; 2021 Bookshopper.</p>
   </footer>
+  <!-- Script for hamburger menu -->
+  <script src="./js/hamburger.js"></script>
 </body>
 </html>

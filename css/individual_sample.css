@@ -17,22 +17,23 @@
 .heading {
   color: black;
   text-align: left;
-  padding-bottom: 10px;
 }
 
-/* Image takes up half of the width of obj-container */
+.image-container {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Image takes up 100% of the width of image-container */
 picture .mainimage {
-  float: left;
-  width: 50%;
-  padding-right: 10px;
+  width: 100%;
   border-radius: 5px;
 }
 
-/* Image takes up half of the width of obj-container */
+/* Image takes up 100% of the width of image-container */
 img .mainimage {
-  float: left;
-  width: 50%;
-  padding-right: 10px;
+  width: 100%;
   border-radius: 5px;
 }
 
@@ -61,7 +62,7 @@ img .mainimage {
   background-color: #155d6b;
 }
 
-/* Main heading of page */
+/* Secondary heading of page */
 h2 {
   padding-bottom: 20px;
 }
@@ -97,31 +98,38 @@ hr {
   margin-bottom: 20px;
 }
 
-/* Map container takes up 50% of the section */
 .maplocation {
   float: left;
-  width: 50%;
+  width: 100%;
   margin-bottom: 20px;
 }
 
-/* Map image takes up 100% of the .maplocation */
-.maplocation img {
+/* Map section takes up 50% of width */
+.obj-map {
+  float: left;
+  width: 50%;
+}
+
+#map {
   width: 100%;
-  border: 3px solid gray;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  padding: 0;
+  height: 300px;
+}
+
+.obj-map p {
+  padding: 10px 0;
+  font-weight: bold;
 }
 
 /* Video container takes up half of the width of the section, placed beside map container */
 .video {
   width:50%;
   float: left;
-  padding: 70px;
+  padding-left: 30px;
 }
 
 .video video {
   width: 100%;
+  height: 300px;
 }
 
 /* When screen is small, elements are expanded to 100% width and stacked on top of each other */
@@ -134,24 +142,30 @@ hr {
     width: 95%;
   }
 
-  /* Header is centered */
+  /* Headings are centered */
   .obj-container h2 {
     text-align: center;
+  }
+
+  .image-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* Image expanded to 100% of the obj-container space */
   picture .mainimage {
     padding-right: 0;
     padding-left: 0;
-    padding-bottom: 5px;
     width: 100%;
+    border-radius: 5px;
   }
 
   img .mainimage {
     padding-right: 0;
     padding-left: 0;
-    padding-bottom: 5px;
     width: 100%;
+    border-radius: 5px;
   }
 
   /* Button expanded to 100% of the obj-container space */
@@ -161,13 +175,8 @@ hr {
   }
 
   /* Expanded to 100% of the obj-container space */
-  .maplocation {
+  .obj-map {
     width: 100%;
-  }
-
-  /* Expanded to 100% of the obj-container space */
-  .maplocation img {
-    width: 100%; 
   }
 
   /* Expanded to 100% of the obj-container space */

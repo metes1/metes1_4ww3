@@ -28,15 +28,19 @@
 .map-results {
   width: 50%;
   float: left;
-  padding: 10px;
 }
 
+#map { 
+  height: 60vh; 
+}
+
+/*
 .map-results img {
   border: 4px solid #1f879c;
   border-radius: 5px;
   width: 100%;
 }
-
+*/
 /* Each individual result, takes up 100% of scrollable container */
 .result-card {
   width: 100%;
@@ -88,12 +92,11 @@ a {
     padding: 0;
     margin-bottom: 10px;
   }
-
   .map-results {
     width: 100%;
     padding: 0;
   }
-
+  
   /* Centers header */
   h2 {
     text-align: center;

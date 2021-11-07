@@ -14,6 +14,18 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/individual_sample.css">
 
+  <!-- Leaflet CSS file -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <!-- Leaflet JavaScript file -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+  <!-- Map script-->
+   <script src="./js/maps.js"></script>
+
   <!-- The title that will show on the tab on the browser -->
   <title>Bookshopper</title>
 
@@ -41,17 +53,33 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="black">
 </head>
-<body>
-  <header>
-    <!--  Logo and website name -->
-    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
-
+<body onload="loadObjectMap()">
+  <header class="header">
     <!-- Navigation bar -->
-    <nav>
-      <a href="search.html">Search</a>
-      <a href="submission.html">Submit a Location</a>
-      <a id="loginnav" href="">Log In</a>
-      <a id="signupnav" href="registration.html">Sign Up</a>
+    <nav class="navbar">
+      <!--  Logo and website name -->
+      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
+      <!-- Navigation links -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="search.html" class="nav-link">Search</a>
+        </li>
+        <li class="nav-item">
+          <a href="submission.html" class="nav-link">Submit a Location</a>
+        </li>
+        <li class="nav-item">
+          <a id="loginnav" href="" class="nav-link">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
+        </li>
+      </ul>
+      <!-- Hanburger menu, not displayed unless screen is small enough -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>    
     </nav>   
   </header>
 
@@ -59,6 +87,7 @@
   <main>
     <div class="obj-container" itemscope itemtype="https://schema.org/BookStore">
       <h1 class="heading" itemprop="name">King W. Books</h1>
+      <hr>
       <!-- Images of the bookstore -->
       <div class="image-container">
         <picture class="mainimage">
@@ -68,11 +97,6 @@
           <source media="(min-width: 450px)" srcset="images/kingwestbooksSmall.jpg">
           <!-- img tag is used as a fallback option (for older browsers) -->
           <img class="mainimage" src="images/kingwestbooks.jpg" alt="bookstore" itemprop="photo">
-        </picture>
-        <picture class="mainimage">
-          <source media="(min-width: 800px)" srcset="images/bookstoreshelves.jpg">
-          <source media="(min-width: 450px)" srcset="images/bookstoreshelvesSmall.jpg">
-          <img class="mainimage" src="images/bookstoreshelves.jpg" alt="bookstore" itemprop="photo">
         </picture>
       </div>
 
@@ -95,20 +119,24 @@
         <hr>
       </div>
 
-      <!-- Section containg the map and address -->
-      <div class="maplocation" itemscope itemtype="https://schema.org/Place">
+
+      <div class="maplocation">
         <h2>Location</h2>
-        <!-- Map is temporarily an image for now -->
-        <img class="map" src="images/kingwbooksMap.png" alt="map of bookstore">
-        <p class="address" itemprop="address" itemscope="https://schema.org/PostalAddress">1060 King St W, Hamilton, ON L8S 1L7</p>
+        <!-- Section containing the map and address -->
+        <div class="obj-map" itemscope itemtype="https://schema.org/Place">
+          <!-- Leaflet Map -->
+          <div id="map"></div>
+          <p class="address" itemprop="address" itemscope="https://schema.org/PostalAddress">1060 King St W, Hamilton, ON L8S 1L7</p>
+        </div>
+         <!--The specific video used is just temporary. The controls attribute adds basic video controls such as play, pause, and volume.-->
+        <div class="video">
+          <video controls>
+            <source src="images/bookvideo.mp4" type="video/mp4">
+          </video>
+        </div>
+
       </div>
 
-      <!--The specific video used is just temporary. The controls attribute adds basic video controls such as play, pause, and volume.-->
-      <div class="video">
-        <video controls>
-          <source src="images/bookvideo.mp4" type="video/mp4">
-        </video>
-      </div>
 
       <!-- Review section -->
       <div class="reviews">
@@ -144,5 +172,7 @@
   <footer>
     <p>Copyright &copy; 2021 Bookshopper.</p>
   </footer>
+  <!-- Script for hamburger menu -->
+  <script src="./js/hamburger.js"></script>
 </body>
 </html>

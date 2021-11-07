@@ -7,19 +7,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/results_sample.css">
+
+  <!-- Leaflet CSS file -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+  <!-- Leaflet JavaScript file -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+   <!-- Map script-->
+   <script src="./js/maps.js"></script>
+
   <title>Bookshopper - Search results</title>
 </head>
-<body>
-  <header>
-    <!--  Logo and website name -->
-    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
-
+<body onload="loadResultsMap()">
+  <header class="header">
     <!-- Navigation bar -->
-    <nav>
-      <a href="search.html">Search</a>
-      <a href="submission.html">Submit a Location</a>
-      <a id="loginnav" href="">Log In</a>
-      <a id="signupnav" href="registration.html">Sign Up</a>
+    <nav class="navbar">
+      <!--  Logo and website name -->
+      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
+      <!-- Navigation links -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="search.html" class="nav-link">Search</a>
+        </li>
+        <li class="nav-item">
+          <a href="submission.html" class="nav-link">Submit a Location</a>
+        </li>
+        <li class="nav-item">
+          <a id="loginnav" href="" class="nav-link">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
+        </li>
+      </ul>
+      <!-- Hanburger menu, not displayed unless screen is small enough -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>    
     </nav>   
   </header>
 
@@ -88,9 +118,9 @@
             </div>
           </a>
         </div>
-        <!-- Temporary map image of the search result locations -->
         <div class="map-results">
-          <img src="images/resultsMap.png" alt="map showing bookstore locations">
+          <!-- Embedded live map -->
+          <div id="map"></div>
         </div>
       </div>
     </div>
@@ -100,5 +130,7 @@
   <footer>
     <p>Copyright &copy; 2021 Bookshopper.</p>
   </footer>
+  <!-- Script for hamburger menu -->
+  <script src="./js/hamburger.js"></script>
 </body>
 </html>

@@ -3,22 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/search.css">
+
+  <!-- Scripts -->
+  <script src="./js/geolocation.js"></script>
+
   <title>Bookshopper - Search</title>
 </head>
 <body>
-  <header>
-    <!--  Logo and website name -->
-    <h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1>
-
+  <header class="header">
     <!-- Navigation bar -->
-    <nav>
-      <a href="search.html">Search</a>
-      <a href="submission.html">Submit a Location</a>
-      <a id="loginnav" href="">Log In</a>
-      <a id="signupnav" href="registration.html">Sign Up</a>
+    <nav class="navbar">
+      <!--  Logo and website name -->
+      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
+      <!-- Navigation links -->
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="search.html" class="nav-link">Search</a>
+        </li>
+        <li class="nav-item">
+          <a href="submission.html" class="nav-link">Submit a Location</a>
+        </li>
+        <li class="nav-item">
+          <a id="loginnav" href="" class="nav-link">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
+        </li>
+      </ul>
+      <!-- Hanburger menu, not displayed unless screen is small enough -->
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>    
     </nav>   
   </header>
 
@@ -29,18 +52,29 @@
       <hr>
       <!-- action is temporary for part 1, works as a link to show results sample page -->
       <form class="search" action="results_sample.html">
-        <input type="text" placeholder="Search by name or location..." id="search" name="search">
-        <button type="submit"><i class="material-icons md-36">search</i></button>
         <!-- Star rating search drop down-->
-        <div class="starselect">
-          <label for="star">With a star rating of at least (optional):</label>
-          <select id="star" name="star">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
+        <select id="star" name="star">
+          <option value="0">Any rating</option>
+          <option value="1">1+ star</option>
+          <option value="2">2+ star</option>
+          <option value="3">3+ star</option>
+          <option value="4">4+ star</option>
+          <option value="4">5+ star</option>
+        </select>
+        <!-- Search bar -->
+        <input type="text" placeholder="Search by name..." id="search" name="search">
+        <!-- Search form submit button -->
+        <button type="submit"><i class="material-icons md-36">search</i></button>
+        <div id="searchByLoc">
+          <!-- When button is clicked, user's location is retrieved (if allowed)-->
+          <button type="button" onclick="getLocation()" id="getLocBtn">
+            <i class="material-icons md-24">location_on</i>Use My Location
+          </button>
+          <!-- Read only input boxes, to solely displays the user's coordinates
+               that will be used in the search results.
+          -->
+          <input type="number" id="lat" name="lat" placeholder="Latitude" readonly>
+          <input type="number" id="lon" name="lon" placeholder="Longitude" readonly>
         </div>
       </form>
     </div>
@@ -50,5 +84,7 @@
   <footer>
     <p>Copyright &copy; 2021 Bookshopper.</p>
   </footer>
+  <!-- Script for hamburger menu -->
+  <script src="./js/hamburger.js"></script>
 </body>
 </html>

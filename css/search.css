@@ -1,5 +1,10 @@
 /* Styling for content on search page */
 
+/* Includes padding and borders in an element's total height and width */
+* {
+  box-sizing: border-box;
+}
+
 /* Main content container */
 .search-container {
   border-radius: 10px;
@@ -23,41 +28,37 @@ hr {
   margin-bottom: 20px;
 }
 
-/* Search form is horizontally centered on page */
 .search-container form {
   padding-top: 30px;
   padding-bottom: 30px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 /* Style the search bar */
 .search input[type=text] {
-  padding: 12px;
-  font-size: 17px;
+  padding: 10px;
+  font-size: 100%;
   border: 1px solid grey;
-  width: 75%;
+  width: 70%;
   background: #f1f1f1;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /* Style the search button */
-.search button {
+.search button[type=submit] {
   margin: 0;
   width: 15%;
-  padding: 10px;
+  padding: 8px;
   background: #1f879c;
   color: white;
-  font-size: 17px;
+  font-size: 90%;
   border: 1px solid grey;
-  border-left: none;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /* Button gets darker when cursor hovers over it */
-.search button:hover {
+.search button[type="submit"]:hover {
   background: #155d6b;
 }
 
@@ -69,15 +70,52 @@ hr {
 }
 
 /* Style the dropdown select position */
-.starselect {
-  margin-top: 20px;
-}
-
 .search select {
-  padding: 10px;
-  font-size: 16px;
+  text-align: center;
+  width: 12%;
+  padding: 10px 2px;
+  font-size: 100%;
   border-radius: 5px;
   background: #f1f1f1;
+}
+
+/* Style search by location section */
+#searchByLoc {
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* Align icon with the middle of the text */
+.material-icons.md-24 {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Style get user location button */
+#getLocBtn {
+  background-color: #FFC300;
+  border: 1px solid grey;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-weight: bold;
+}
+
+/* Button darkens when hovered over*/
+#getLocBtn:hover {
+  background-color: #d4a200;
+}
+
+/* Style the lat/lon fields */
+.search input[type=number] {
+  padding: 5px;
+  border: 1px solid grey;
+  background: #f1f1f1;
+  border-radius: 5px;
+  /* Prevents cursor chaning when hovering over field, makes input box
+     unclickable.
+  */
+  pointer-events: none;
 }
 
 /* Resizes the sign up search container to fill the whole width of the
@@ -103,14 +141,42 @@ hr {
   /* Use order to control the order in which the elements stack */
   .search input[type="text"] {
     width: 100%;
-    padding: 24px;
+    padding: 10px;
     order: 1;
+    font-size: 120%;
   }
 
-  .search button {
-    margin-top: 50px;
+  /* Select is brought underneath search bar, and is centered*/
+  .search select {
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 100%;
+    width: 40%;
+    order: 2;
+  }
+
+  .search button[type=submit] {
+    margin-top: 30px;
+    width: 100%;
+    order: 4;
+  }
+
+  /* Place search by location div before search button */
+  #searchByLoc {
+    margin-top: 30px;
+    font-size: 100%;
     width: 100%;
     order: 3;
+  }
+
+  #getLocBtn {
+    width: 40%;
+    padding: 1px 1px;
+  }
+
+  .search input[type=number] {
+    width: 25%;
   }
 
   /* Style the search icon, extra larger symbol size */
@@ -118,15 +184,5 @@ hr {
     font-size: 250%;
     padding: 0;
     margin: 0;
-  }
-
-  .starselect {
-    margin-top: 50px;
-    width: 100%;
-    order: 2;
-  }
-
-  .search select {
-    padding: 14px;
   }
 }

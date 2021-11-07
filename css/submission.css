@@ -1,6 +1,5 @@
 /* Styling for Submission page */
 
-
 /* Includes padding and borders in an element's total height and width */
 * {
   box-sizing: border-box;
@@ -24,8 +23,15 @@ h2 {
   text-align: center;
 }
 
-.submission-container label {
-  padding: 12px 12px 12px 0;
+/* Styling for required field message */
+p {
+  font-size: 80%;
+  padding-bottom: 10px;
+}
+
+/* Colors all bolded elements red (only aterisks are in the b tag) */ 
+b {
+  color: red;
 }
 
 /* Styling for input boxes in the form */
@@ -41,16 +47,61 @@ h2 {
   height: 20vh;
 }
 
+/* Styling for number input boxes in the form */
+.submission-container input[type=number] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+/* Outlines input box when number is out of range.
+   Used in addition to the automatic html out-of-range warning 
+   triggered on submission. This css will give immediate feedback though.
+*/
+input[type=number]:out-of-range { 
+  border: 1.5px solid red;
+  background-color: rgba(255,0,0,0.2);
+  outline: none;
+}
+
+/* Simple styling for get location button*/
+#getLocBtn {
+  background-color: #FFC300;
+  border: 1px solid grey;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-weight: bold;
+}
+
+/* Button darkens when hovered over*/
+#getLocBtn:hover {
+  background-color: #d4a200;
+}
+
+/* Align icon with the middle of the text */
+.material-icons.md-24 {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
 /*Styling for Submit button in form*/
+/* It is more styled and colorful then other buttons so it can stand out
+   Since it's the most important and final button on the form
+ */
 .submission-container input[type=submit] {
   background-color: #1f879c;
   color: white;
   padding: 12px 20px;
   margin: 8px 0;
+  font-size: 100%;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   float: right;
+  font-weight: bold;
 }
 
 /* submit button gets darker when mouse overs over */
