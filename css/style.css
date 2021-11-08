@@ -51,11 +51,61 @@ body {
   vertical-align: middle;
 }
 
+/* Website title */
+.nav-logo {
+  color: white;
+  font-size: 100%;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 1.5rem;
+  padding: 0.5rem 1.5rem;
+}
+
+/* Style menu items, set transition times */
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu a {
+  padding: 8px 0;
+  color: white;
+  position: relative;
+  display: inline-block;
+}
+
+.nav-menu a:before {
+  position: absolute;
+  content: "";
+  z-index: -2;
+  height: 3px;
+  left: 0;
+  right: 100%;
+  bottom: 50%;
+  -webkit-transition-property: right;
+  transition-property: right;
+  -webkit-transition: 0.3s ease-out;
+  transition: 0.3s ease-out;
+  /* Color of lines */
+  background-color: #1f879c;
+}
+
+.nav-menu a:hover:before {
+  right: 0;
+}
+
+.nav-menu a:hover:before {
+  bottom: 10%;
+}
+
+/* The spacing between each nav item*/
+.nav-item {
+  margin-left: 3rem;
+  z-index: 0;
 }
 
 /* Don't display hamburger menu if screen isn't small */
@@ -72,32 +122,6 @@ body {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   background-color: white;
-}
-
-.nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* The spacing between each nav item*/
-.nav-item {
-  margin-left: 3rem;
-}
-
-.nav-link {
-  font-size: 1rem;
-  color: white;
-}
-
-/* Change nav link color when hovered over */
-.nav-link:hover {
-  color: #FFC300;
-}
-
-.nav-logo {
-  color: white;
-  font-size: 100%;
 }
 
 main {
@@ -118,12 +142,17 @@ footer {
 
 /* Hamburger menu is enable when screen is smaller */
 @media screen and (max-width: 750px) {
+  .navbar {
+    padding: 0.5rem 1.5rem;
+  }
+
   .nav-menu {
     position: fixed;
     background-color: #5F4B8B;
     width: 100%;
     border-radius: 10px;
     text-align: center;
+    /* pushed 100% to left, so not visible*/
     left: -100%;
     top: 5rem;
     flex-direction: column;
@@ -131,16 +160,18 @@ footer {
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);;
   }
 
+  /* When hamburger menu is clicked, it comes in from the left */
   .nav-menu.active {
     left: 0;
   }
 
   /* Space out the navigation items*/
-  .nav-item {
-    margin: 1.5rem 0;
+  .nav-menu li {
+    margin: 10px 0;
   }
 
-  .nav-link {
+  .nav-menu a {
+    padding: 15px 0px;
     font-size: 120%;
   }
 
@@ -149,16 +180,20 @@ footer {
     cursor: pointer;
   }
 
-  /* Creates an animation on the x of the hamburger menu*/
+  /* These 3 things create an animation on the hamburger menu symbol */
+  /* Transforms from three bars to an x*/
+
+  /* Hide this bar */
   .hamburger.active .bar:nth-child(2) {
     opacity: 0;
   }
 
-  /* The x rotates when clicked */
+  /* Move and rotate this bar so it is a diagonal line*/
   .hamburger.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
 
+  /* Move and rotate this bar so it crosses the other diagonal line, creating an x */
   .hamburger.active .bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }

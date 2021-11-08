@@ -1,8 +1,10 @@
-// Scripts for embedding maps onto both the results page and the individual object page
+// Functions for embedding live maps onto both the results page and the individual object page
 // Data is hardcoded in for now
 
 // Initialize the map
 // Code slightly modified from https://leafletjs.com/examples/quick-start/
+
+// Initializes a map with the given inputs
 function initMap(mapName, lat, lon, zoom) {
   //Create map and set the view to specific coordinates and zoom level
   var myMap = L.map(mapName).setView([lat, lon], zoom);
@@ -32,7 +34,8 @@ function loadResultsMap() {
   var marker3 = L.marker([43.25369183554057, -79.8600087443657]).addTo(resultsMap);
   var marker4 = L.marker([43.26137224471584, -79.90746691419702]).addTo(resultsMap);
 
-  //Add popup for each marker, with name and link to object page (all link to individual_sample for now)
+  //Add popup for each marker, with the name of the bookstore and the link to object page 
+  // (all link to individual_sample page temporarily)
   marker1.bindPopup("<a href=\"./individual_sample.html\"><b>Coles - Jackson Square</b></a>");
   marker2.bindPopup("<a href=\"./individual_sample.html\"><b>James Street Bookseller & Gallery</b></a>");
   marker3.bindPopup("<a href=\"./individual_sample.html\"><b>J.H. Gordon Books</b></a>");
