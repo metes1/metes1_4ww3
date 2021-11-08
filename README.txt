@@ -2,47 +2,48 @@ Name: Seda Mete
 MAC ID: metes1
 Student Number: 400134659
 
-All page links:
-1. http://18.222.242.154/home/registration.html
-2. http://18.222.242.154/home/search.html
-3. http://18.222.242.154/home/results_sample.html
-4. http://18.222.242.154/home/individual_sample.html
-5. http://18.222.242.154/home/submission.html
+All page links (to the deployed server with SSL enabled):
+1. https://4ww3seda.live/bookshopper/registration.html
+2. https://4ww3seda.live/bookshopper/search.html
+3. https://4ww3seda.live/bookshopper/results_sample.html
+4. https://4ww3seda.live/bookshopper/individual_sample.html
+5. https://4ww3seda.live/bookshopper/submission.html
 
+Core Programming Tasks:
+Below I list where the new tasks for part two were implemented (their file path). I completed all tasks.
 
-I did both add-on tasks 1 and 2.
+1) Search form
+    - Added button allowing the user to search based on their location (search.html, css/search.css)
+    - Used HTML5 Geolocation API to retrieve the user’s location (js/geolocation.js)
 
-Add-on task 2: HTML5 images and video
-2.d
-i.
+2) Sample results page
+    - Embedded a live map into the page using Javascript and LeafletJS, with markers and popup labels. (results_sample.html, js/maps.js, css/results_sample.css)
 
-The two versions of graphics explained in 2.a are about a lower resolution (standard) and a higher resolution (for high-DPI displays) version
-of an image. The standard version will have less pixels than the high resolution one.
+3) Sample individual object page
+    - Embedded a live map into the page showing the individual object's location.(individual_sample.html, js/maps.js, css/individual_sample.css)
 
-Sample code: 
-    <picture class="mainimage">
-        <source media="(min-width: 800px)" srcset="images/bookstoreshelves.jpg">
-        <source media="(min-width: 450px)" srcset="images/bookstoreshelvesSmall.jpg">
-        <img class="mainimage" src="images/bookstoreshelves.jpg" alt="bookstore" itemprop= "mainimage">
-    </picture>
+4) Object submission page
+    - Added client‐side form validation using HTML5/CSS. (submission.html, css/submission.css)
+    - Allow the user to set the location of the object using the Geolocation API. (js/geolocation.js)
 
-In this example the <picture> element contains three other elements within it. The <picture> element will pick the most suitable image among those three. The <source> element that specifies and refers to the actual media file. The <img> element refers to the default image that will appear if none of the sources are suitable for the the device or if the browser doesn't support <picture> elements.
+5) User registration page
+    -  Added client‐side form validation using JavaScript (registration.html, js/registration.js, css/registration.css)
 
+Add-on Programming Task:
+Only partially completed (didn't animate 10 things).
 
-ii. Three positive goals that can be achieved using HTML5 <picture> and <source> attributes are:
-	1) It can help reduce bandwidth overhead. A high resolution picture is usually uneccessary if the image is being shown on a small mobile phone. A lower resolution picture would work just as fine. These tags allow you to use lower resolution over higher, when higher quality isn't needed. High resolution images take longer to load, so if we don't need them we should avoid it.
+The things that are animated on the site include:
+1) When hovering over a menu item in the navigation bar, a blue horizontal line transitions in and underlines the item (not a static underline). This works for all menu items. These animations can be found in css/style.css.
 
-	2) Makes responsive website design easier for developers and improves the overall final result of a website.
+2) The hamburger menu icon (which appears when the screen is smaller) transforms into an X when the menu is opened. When the X is clicked, the X transforms back into the hamburger menu icon (the three horizontal lines). This animation can be found in css/style.css and in js/hamburger.js.
 
-	3) It improves user experience both visually and performance wise. Firstly, it adapts images to better fit different sized display screens, making the site look more appealing. Overall, the visual experience of the user will be improved. It can also help improve user experience as it can potentially speed up performance of the website (mentioned in 1).
-
-
-iii. A negative aspect about using HTML5 <picture> and <source> attributes is that they are not support by all browsers, especially older ones. This negative can be mitigated by using the <img> tag inside of <picture> as a fall back in case that the browser doesn't support <picture>.
-
-
+3) The hamburger menu also flies into view from the left side when it is opened.
 
 Notes to Marker:
 
-Currently the navigation bar goes underneath the website title when the screen is smaller. I styled it so it would adapt well to the screen size. Initially I wanted to use a hamburger style menu for the mobile display because I think it looks nicer, but I didn't because it requires javascript (which is not allowed as stated in the project specification). I may potentially change the mobile navigation bar in the future to hamburger style menu.
+I provided specific links to every page on my server. The pages are also accessible by navigating through the site. For instance, through the navigation bar you can access search.html, submission.html and registration.html. results_sample.html can be accessed from the Search page by clicking the search button. Then individual_sample.html can be accessed through the results_sample.html page by clicking the "4. King W. Books" result.
 
-I did not add index.html as it was not in the project specification. It will be added later in the future as a homepage. I provided specific links to every page on my server, so they can be access that way instead (since there's no homepage). The pages are also accessible by navigating through the site. For instance, through the navigation bar you can access search.html, submission.html and registration.html. results_sample.html can be accessed from the Search page by clicking the search button. Then individual_sample.html can be accessed through the results_sample.html page by clicking the "4. King W. Books" result.
+
+
+
+
