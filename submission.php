@@ -23,6 +23,7 @@
   <main>
     <h2>Submit a New Bookstore Location</h2>
     <hr>
+    <?php include("objSubmit.php"); ?>
     <div class="submission-container">
       <!-- Submission form, layed out in two columns (label to the left of input boxes) -->
       <!-- Informs user that fields marked with a * are required. Hidden from screen readers because they will instead
