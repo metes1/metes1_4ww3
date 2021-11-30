@@ -1,0 +1,29 @@
+* {
+  /* Includes padding and borders in an element's total height and width */
+  box-sizing: border-box;
+}
+
+main {
+  background-size: cover;
+  background-image: url("../images/home1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.maintext {
+  text-align: center;
+  font-size: 130%;
+  margin: 10px;
+}
+
+.maintext h1 {
+  color: #FFC300;
+  font-weight: bolder;
+}
+
+.maintext h2 {
+  color: white;
+}

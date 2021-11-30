@@ -1,0 +1,108 @@
+/* Styling for content on login page */
+
+/* Includes padding and borders in an element's total height and width */
+* {
+  box-sizing: border-box;
+}
+
+/* Main content is centered and takes up on 40% of the screen width */
+.login-container {
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  padding: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.login-container h2 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+/* Removes underline in hyperlink */
+.login-container a {
+  text-decoration: none;
+}
+
+/* Underlines Sign up hyperlink when hovered over to indicate that it is clickable */
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.login-container p {
+  text-align: center;
+}
+
+.login-container form {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Puts space between the form elements */
+.formItem {
+  margin-bottom: 12px;
+}
+
+input[type=email], input[type=password] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+/*Styling for Log In button in form*/
+.login-container input[type=submit] {
+  width: 100%;
+  background-color: #1f879c;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 100%;
+}
+
+/* Log In button gets darker when cursor hovers over it */
+.login-container input[type=submit]:hover {
+  background-color: #155d6b;
+}
+
+/* Styling for error messages*/
+.error {
+  font-size: small;
+  color: red;
+}
+
+/* Login failed message */
+#loginFail {
+  width: 100%;
+  color: darkred;
+  background-color: #ffbfba;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+/* Resizes the sign up form container to fill the whole width of the
+   screen if the screen is small.
+*/
+@media screen and (max-width: 700px) {
+  .login-container {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 900px) and (min-width: 701px){
+  .login-container {
+    width: 70%;
+  }
+}

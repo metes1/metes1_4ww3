@@ -44,7 +44,15 @@ img .mainimage {
   margin-bottom: 10px;
 }
 
-.reviewbtn {
+#reviewsLink {
+  text-decoration: none;
+}
+
+#reviewsLink:hover {
+  text-decoration: underline;
+}
+
+#reviewbtn {
   background-color: #1f879c;
   color: white;
   padding: 16px 20px;
@@ -58,7 +66,101 @@ img .mainimage {
 }
 
 /* Button goes darker in colour when cursor hovers over */
-.reviewbtn:hover {
+#reviewbtn:hover {
+  background-color: #155d6b;
+}
+
+/* Styling when the review modal is opened */
+#reviewModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Style the modal popup */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add animation to modal */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The close button on the modal */
+#modal-close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+#modal-close:hover,
+#modal-close:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header {
+  margin-bottom: 15px;
+}
+
+select {
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+/* Text area of modal */
+textarea {
+  padding: 5px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  height: 20vh;
+}
+
+/* Submit button on modal */
+#modal-submit {
+  background-color: #1f879c;
+  color: white;
+  padding: 10px 15px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 40%;
+}
+
+/* Button goes darker in colour when cursor hovers over */
+#modal-submit:hover {
   background-color: #155d6b;
 }
 
@@ -68,9 +170,10 @@ h2 {
 }
 
 /* Reviews take up the entire width of the container */ 
-.reviews {
+#reviewSection {
   width: 100%;
   float: left;
+  margin-bottom: 10px;
 }
 
 .review {
@@ -78,8 +181,9 @@ h2 {
   width: 100%;
   background-color: white;
   border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 12px;
+  margin-bottom: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .starrating {
@@ -101,7 +205,6 @@ hr {
 .maplocation {
   float: left;
   width: 100%;
-  margin-bottom: 20px;
 }
 
 /* Map section takes up 50% of width */
@@ -113,6 +216,7 @@ hr {
 #map {
   width: 100%;
   height: 300px;
+  z-index: 0; /* Ensures map isn't in front of the mobile menu */
 }
 
 .obj-map p {
@@ -169,9 +273,19 @@ hr {
   }
 
   /* Button expanded to 100% of the obj-container space */
-  .reviewbtn {
+  #reviewbtn {
     width: 100%;
     padding: 20px 20px;
+  }
+
+  .modal-content {
+    width: 90%;
+  }
+
+  #modal-submit {
+    width: 100%;
+    padding: 20px 20px;
+    font-size: 120%;
   }
 
   /* Expanded to 100% of the obj-container space */
@@ -182,13 +296,17 @@ hr {
   /* Expanded to 100% of the obj-container space */
   .video {
     width: 100%;
-    margin: 0;
-    padding: 20px 0px 20px 0px;
+    margin-top: 20px;
+    padding: 0;
 
   }
   /* Expanded to 100% of the obj-container space */
   .video video {
     margin: 0;
     width: 100%;
+  }
+
+  #noReviews {
+    text-align: center;
   }
 }

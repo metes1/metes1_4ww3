@@ -66,7 +66,7 @@ function validateRegistration(form) {
     return false;
   } else if (passConfirm.value != password.value) { // if passConfirm doesn't match password
     invalidField(passConfirm);
-    document.getElementById("error-passConfirm").innerHTML = "Passwords don't match";
+    document.getElementById("error-passConfirm").innerHTML = "Passwords do not match";
     return false;
   } else {
     validField(passConfirm);

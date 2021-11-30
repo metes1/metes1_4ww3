@@ -7,6 +7,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/search.css">
 
@@ -16,42 +17,16 @@
   <title>Bookshopper - Search</title>
 </head>
 <body>
-  <header class="header">
-    <!-- Navigation bar -->
-    <nav class="navbar">
-      <!--  Logo and website name -->
-      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
-      <!-- Navigation links -->
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="search.html" class="nav-link">Search</a>
-        </li>
-        <li class="nav-item">
-          <a href="submission.html" class="nav-link">Submit a Location</a>
-        </li>
-        <li class="nav-item">
-          <a id="loginnav" href="" class="nav-link">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
-        </li>
-      </ul>
-      <!-- Hanburger menu, not displayed unless screen is small enough -->
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>    
-    </nav>   
-  </header>
-
+  <!-- Header/Navigation menu -->
+  <?php include "menu.inc" ?>
+  
   <!-- Main content section for Search -->
   <main>
     <div class="search-container">
       <h2>Search for bookstores</h2>
       <hr>
-      <!-- action is temporary for part 1, works as a link to show results sample page -->
-      <form class="search" action="results_sample.html">
+      <!-- When submitted, redirected to results page, results_sample.php -->
+      <form class="search animate__animated animate__fadeIn" method="get" action="results_sample.php">
         <!-- Star rating search drop down-->
         <select id="star" name="star">
           <option value="0">Any rating</option>
@@ -59,7 +34,7 @@
           <option value="2">2+ star</option>
           <option value="3">3+ star</option>
           <option value="4">4+ star</option>
-          <option value="4">5+ star</option>
+          <option value="5">5 star</option>
         </select>
         <!-- Search bar -->
         <input type="text" placeholder="Search by name..." id="search" name="search">
@@ -80,10 +55,9 @@
     </div>
   </main>
 
-    <!-- Footer of webpage -->
-  <footer>
-    <p>Copyright &copy; 2021 Bookshopper.</p>
-  </footer>
+  <!-- Footer of webpage -->
+  <?php include "footer.inc" ?>
+  
   <!-- Script for hamburger menu -->
   <script src="./js/hamburger.js"></script>
 </body>

@@ -131,6 +131,12 @@ input[type=number]:out-of-range {
   clear: both;
 }
 
+/* Styling for error messages*/
+.error {
+  font-size: small;
+  color: red;
+}
+
 /* Resizes the submission form container to fill the whole width of the
    screen if the screen is small. Labels go above input boxes instead of beside.
 */

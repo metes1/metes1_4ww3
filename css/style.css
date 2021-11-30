@@ -39,7 +39,6 @@ body {
 
 /* Adds color to header */
 .header {
-  border-bottom: 1px solid #E2E8F0;
   background-color: #5F4B8B;
 }
 
@@ -91,7 +90,7 @@ body {
   -webkit-transition: 0.3s ease-out;
   transition: 0.3s ease-out;
   /* Color of lines */
-  background-color: #1f879c;
+  background-color: #FFC300;
 }
 
 .nav-menu a:hover:before {
@@ -147,6 +146,8 @@ footer {
   }
 
   .nav-menu {
+    /* Bring it to the front, so it doesn't lay behind the content */
+    z-index: 5;
     position: fixed;
     background-color: #5F4B8B;
     width: 100%;
@@ -154,10 +155,26 @@ footer {
     text-align: center;
     /* pushed 100% to left, so not visible*/
     left: -100%;
-    top: 5rem;
+    top: 3rem;
     flex-direction: column;
     transition: 0.2s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);;
+  }
+
+  /* Prevents hover animation on mobile, animation doesn't work well*/
+  .nav-menu a:hover:before {
+    right: auto;
+  }
+
+  .nav-menu a:hover:before {
+    bottom: auto;
+  }
+
+  /* Since hovering isn't really possible on mobile, 
+     the color of the link will change for a second or so when clicked
+  */
+  .nav-menu a:hover {
+    color: #FFC300;
   }
 
   /* When hamburger menu is clicked, it comes in from the left */

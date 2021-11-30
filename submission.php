@@ -6,6 +6,7 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/submission.css">
 
@@ -15,34 +16,8 @@
   <title>Bookshopper - Submit a Location</title>
 </head>
 <body>
-  <header class="header">
-    <!-- Navigation bar -->
-    <nav class="navbar">
-      <!--  Logo and website name -->
-      <a href="search.html" class="nav-logo"><h1><i class="material-icons md-36">menu_book</i>Bookshopper</h1></a>
-      <!-- Navigation links -->
-      <ul class="nav-menu">
-        <li class="nav-item">
-          <a href="search.html" class="nav-link">Search</a>
-        </li>
-        <li class="nav-item">
-          <a href="submission.html" class="nav-link">Submit a Location</a>
-        </li>
-        <li class="nav-item">
-          <a id="loginnav" href="" class="nav-link">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a id="signupnav" href="registration.html" class="nav-link">Sign Up</a>
-        </li>
-      </ul>
-      <!-- Hanburger menu, not displayed unless screen is small enough -->
-      <div class="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>    
-    </nav>   
-  </header>
+  <!-- Header/Navigation menu -->
+  <?php include "menu.inc" ?>
 
   <!-- Main content section for submission -->
   <main>
@@ -54,7 +29,7 @@
            read that a field is required using the required attribute in the input tag
       -->
       <p aria-hidden="true"><b>*</b> Required field</p>
-      <form>
+      <form method="post" action="submission.php">
         <!-- Client-side form validation added using purely HTML5/CSS -->
         <div class="row">
           <div class="col-25">
@@ -64,7 +39,8 @@
           <div class="col-75">
             <!-- Input is required, form cannot be submitted without this value filled, validation performed automatically by browser -->
             <!-- Length of name restricted to maximum 100 characters -->
-            <input type="text" id="name" name="name" placeholder="Enter the name of the bookstore (max 100 characters)" required maxlength="100">
+            <input type="text" id="name" name="name" value="<?php echo $objName;?>" placeholder="Enter the name of the bookstore (max 100 characters)" required maxlength="100">
+            <div class="error" id="error-name"><?php echo $objnameErr;?></div>
           </div>
         </div>
         <div class="row">
@@ -73,7 +49,8 @@
           </div>
           <div class="col-75">
             <!-- Maximum number of characters allowed is 1000 -->
-            <textarea id="desc" name="desc" placeholder="Enter a description for the bookstore (max 1000 characters)" maxlength="1000"></textarea>
+            <textarea id="desc" name="desc" value="<?php echo $objDesc;?>" placeholder="Enter a description for the bookstore (max 1000 characters)" maxlength="1000"></textarea>
+            <div class="error" id="error-desc"><?php echo $objdescErr;?></div>
           </div>
         </div>
         <div class="row">
@@ -82,7 +59,8 @@
           </div>
           <div class="col-75">
             <!-- Coordinate input restricted to being numbers only (inlcuding decimal numbers), number range restricted -->
-            <input type="number" id="lat" name="lat" placeholder="Ex. 41.40338" required min="-90" max="90" step="any">
+            <input type="number" id="lat" name="lat" value="<?php echo $objLat;?>" placeholder="Ex. 41.40338" required min="-90" max="90" step="any">
+            <div class="error" id="error-lat"><?php echo $objlatErr;?></div>
           </div>
         </div>
         <div class="row">
@@ -90,7 +68,8 @@
             <label for="lon">Longitude <b aria-hidden="true">*</b></label>
           </div>
           <div class="col-75">
-            <input type="number" id="lon" name="lon" placeholder="Ex. 2.17403" required min="-180" max="180" step="any">
+            <input type="number" id="lon" name="lon" value="<?php echo $objLon;?>" placeholder="Ex. 2.17403" required min="-180" max="180" step="any">
+            <div class="error" id="error-lon"><?php echo $objlonErr;?></div>
           </div>
         </div>
         <!-- Row for Use Current Location button -->
@@ -111,6 +90,7 @@
           <div class="col-75">
             <!-- Specify which types of files can be accepted -->
             <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg, .gif, .svg">
+            <div class="error" id="error-image"><?php echo $objimageErr;?></div>
           </div>
         </div>
         <div class="row">
@@ -120,19 +100,19 @@
           <div class="col-75">
             <!-- Specify which types of files can be accepted -->
             <input type="file" id="video" name="video" accept=".mp4, .mov, .avi, .webm, .m4v">
+            <div class="error" id="error-video"><?php echo $objvideoErr;?></div>
           </div>
         </div>
         <div class="row">
-          <input type="submit" value="Submit">
+          <input name="objectSubmit" type="submit" value="Submit">
         </div>
       </form>
     </div>
   </main>
 
-    <!-- Footer of webpage -->
-  <footer>
-    <p>Copyright &copy; 2021 Bookshopper.</p>
-  </footer>
+  <!-- Footer of webpage -->
+  <?php include "footer.inc" ?>
+  
   <!-- Script for hamburger menu -->
   <script src="./js/hamburger.js"></script>
 </body>
