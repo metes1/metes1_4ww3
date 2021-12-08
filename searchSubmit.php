@@ -39,8 +39,8 @@
 
     if (!empty($lat) and !empty($lon)) { // only select stores within a certain distance from the user
       //uses haversine formula
-      $selects .= ", ( 6371 * acos( cos(radians( ? )) * cos(radians(s.`latitude`)) * cos(radians(s.`longitude`)
-       - radians( ? )) + sin(radians( ? )) * sin(radians(s.`latitude`)) ) ) AS distance";
+      $selects .= ", ( 6371 * acos( cos(radians( ? )) * cos(radians(S.`latitude`)) * cos(radians(S.`longitude`)
+       - radians( ? )) + sin(radians( ? )) * sin(radians(S.`latitude`)) ) ) AS distance";
       $endQuery .= " HAVING distance < 30 ORDER BY distance";
       array_push($valArr, $lat, $lon, $lat); //push values in array
     }

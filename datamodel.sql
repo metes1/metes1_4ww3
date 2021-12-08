@@ -17,7 +17,7 @@ CREATE TABLE `store` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
-  `rating` decimal(2,1) NOT NULL,
+  `rating` decimal(2,1) DEFAULT 0,
   `latitude` decimal(10,8) NOT NULL,
   `longitude` decimal(11,8) NOT NULL,
   `image` varchar(2048) DEFAULT NULL,
