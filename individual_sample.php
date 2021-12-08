@@ -56,7 +56,7 @@
   if ($storeData["image"] != null or $storeData != "") {
     try {
       //db configurations
-      require_once "s3config.php";
+      require_once "s3conf.php";
       //get image name from database result
       $keyPath = $storeData["image"];
 

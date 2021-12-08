@@ -82,7 +82,7 @@
       //db configurations
       require_once "config.php";
       //s3 configurations
-      require_once "s3config.php";
+      require_once "s3conf.php";
       $keyName = "";
       $pathInS3 = "";
 
