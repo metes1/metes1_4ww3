@@ -1,48 +1,53 @@
-<!DOCTYPE html>
 <?php 
-  //db configurations
-  require "config.php";
+  session_start();
+
   //inital data variables
   $storeData = "";
   $reviewData = "";
+  $storeId = "";
   try {
-    if (isset($_GET["storeid"])) { //only connect to database if storeid variable is set
-      $storeId = $_GET["storeid"];
-
+    if (isset($_GET["storeid"])) { //only connect to database if store id and name variables are set
+      $storeId = intval($_GET["storeid"]); //ensure it is int val for database search
+      //db configurations
+      require_once "config.php";
+      //connect to database
       $conn = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
       // set the PDO error mode to exception
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
       //get store data from db
-      $stmt = $conn->prepare("SELECT * FROM store WHERE id=?"); //prepare sql statement
+      $stmt = $conn->prepare("SELECT * FROM `store` WHERE `id` = ?"); //prepare sql statement
       $stmt->execute([$storeId]);
       $storeData = $stmt->fetch(PDO::FETCH_ASSOC); //fetch results
       $stmt = null;
 
-      //if storeid doesn't exist in database (no data was returned), redirect to home page
-      if (!$storeData) {
+      //if storeid doesn't exist in database (no data was returned), redirect to home page as this is an invalid page
+      if (!$storeData) { //if data array is empty
         header("Location: index.php");
         $conn = null;
         exit();
       }
 
       //get store reviews and associated user info for reviews, ordered by newest to oldest
-      $reviewQuery = "SELECT R.rating, R.text, U.firstName, U.lastName FROM review AS R LEFT JOIN user AS U ON R.userId = U.id WHERE R.storeId=? ORDER BY R.dateCreated DESC";
+      $reviewQuery = "SELECT R.`rating`, R.`reviewText`, U.`firstName`, U.`lastName`
+        FROM `review` AS R LEFT JOIN `user` AS U ON R.`userId` = U.`id`
+        WHERE R.`storeId` = ? ORDER BY R.`dateCreated` DESC";
       $stmt = $conn->prepare($reviewQuery);
       $stmt->execute([$storeId]);
       $reviewData = $stmt->fetchAll(PDO::FETCH_ASSOC); //fetch reviews
 
       //close the connection
       $conn = null;
-    } else { //redirect to main homepage
+    } else { //redirect to main homepage, storeid and is not set
       header("Location: index.php");
+      exit();
     }
-
   } catch (PDOException $e) { //catches any errors
     //Errors terminate script
     die("Error!: " . $e->getMessage());
   }
 ?>
+<!DOCTYPE html>
 <!-- The language code is English -->
 <html lang="en">
 <head>
@@ -75,10 +80,10 @@
   <title>Bookshopper | <?php echo $storeData["name"];?></title>
 
   <!-- Facebook’s Open Graph Protocol -->
-  <meta property="og:title" content="<?php echo $storeData["name"];?>">
+  <meta property="og:title" content="<?php echo $storeData['name'];?>">
   <meta property="og:type" content="Website">
   <meta property="og:site_name" content="Bookshopper">
-  <meta property="og:url" content="http://18.222.242.154/home/individual_sample.html">
+  <meta property="og:url" content="https://4ww3seda.live/bookshopper/individual_sample.php/?storeid=<?php echo $storeData['id'];?>"
   <meta property="og:image" content="http://18.222.242.154/home/images/kingwestbooks.jpg">
   <meta property="og:description" content="<?php echo $storeData['description'];?>">
 
@@ -169,21 +174,32 @@
               <h3>Write a Review</h3>
             </div>
             <div class="modal-body">
-              <form>
-                <label for="modal-rating">Star rating: </label>
-                <select id="modal-rating" name="modal-rating">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="4">5</option>
-                </select>
-                <br>
-                <label for="modal-review">Review: </label><br>
-                <textarea name="modal-review" placeholder="Write your review here..."></textarea>
-                <br>
-                <input type="submit" id="modal-submit" name="modal-submit" value="Post Review">
-              </form>
+              <?php
+                // only logged in users can submit a review
+                if (isset($_SESSION["loggedIn"])) {
+                  //submit form to reviewSubmit script, for validation and database insertion
+                  echo '<form method="post" action="reviewSubmit.php?storeid='.$storeData["id"].'">';
+                  echo '<label for="modal-rating">Star rating: </label>';
+                  echo '<select id="modal-rating" name="modal-rating" required>';
+                  echo '<option hidden disabled selected value=""></option>';
+                  echo '<option value="1">1</option>';
+                  echo '<option value="2">2</option>';
+                  echo '<option value="3">3</option>';
+                  echo '<option value="4">4</option>';
+                  echo '<option value="5">5</option>';
+                  echo '</select>';
+                  echo '<div class="error" id="error-rating"></div>';
+                  echo '<br>';
+                  echo '<label for="modal-review">Review: </label><br>';
+                  echo '<textarea name="modal-review" placeholder="Write your review here (max 1000 characters)" maxlength="1000"></textarea>';
+                  echo '<br>';
+                  echo '<input type="submit" id="modal-submit" name="modal-submit" value="Post Review">';
+                  echo '</form>';
+                } else {
+                  // message telling user to log in in order to submit review, link to log in page
+                  echo '<p>You must log in to submit a review. <a href="login.php">Log in</a></p>';
+                }
+              ?>          
             </div>
           </div>
         </div>
@@ -196,8 +212,6 @@
         <div class="obj-map" itemscope itemtype="https://schema.org/Place">
           <!-- Leaflet Map -->
           <div id="map"></div>
-
-          <!-- <p class="address" itemprop="address" itemscope="https://schema.org/PostalAddress">1060 King St W, Hamilton, ON L8S 1L7</p> -->
         </div>
          <!--The specific video used is just temporary. The controls attribute adds basic video controls such as play, pause, and volume.-->
         <div class="video">
@@ -231,7 +245,7 @@
               }
             }
             echo '<meta itemprop="reviewRating" content='.$reviewData[$i]["rating"].'>';
-            echo '<p itemprop="reviewBody">'.$reviewData[$i]["text"].'</p>';
+            echo '<p itemprop="reviewBody">'.$reviewData[$i]["reviewText"].'</p>';
             echo '</div>';
           }
         ?>
@@ -243,17 +257,22 @@
   <?php include "footer.inc" ?>
 
   <script>
+    //open and close review modal
     var modal = document.getElementById("reviewModal");
     var btn = document.getElementById("reviewbtn");
     var span = document.getElementById("modal-close");
+
+    //display modal when write a review button is clicked
     btn.onclick = function() {
       modal.style.display = "block";
     }
-
+    
+    //close modal when the x in the top corner is clicked
     span.onclick = function() {
       modal.style.display = "none";
     }
 
+    //close modal when user clicks outside of the modal
     window.onclick = function(event) {
       if (event.target == modal) {
         modal.style.display = "none";
