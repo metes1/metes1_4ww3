@@ -121,15 +121,21 @@
   <meta property="og:title" content="<?php echo $storeData['name'];?>">
   <meta property="og:type" content="Website">
   <meta property="og:site_name" content="Bookshopper">
-  <meta property="og:url" content="https://4ww3seda.live/bookshopper/individual_sample.php/?storeid=<?php echo $storeData['id'];?>"
-  <meta property="og:image" content='<?php echo $presignedUrl; ?>'>
+  <meta property="og:url" content="https://4ww3seda.live/bookshopper/individual_sample.php/?storeid=<?php echo $storeData['id'];?>">
+  <?php if (!empty($presignedUrl)) {
+      echo '<meta property="og:image" content="'.$presignedUrl.'">';
+    }
+  ?>
   <meta property="og:description" content="<?php echo $storeData['description'];?>">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="<?php echo $storeData['name'];?>">
   <meta property="twitter:description" content="<?php echo $storeData['description'];?>">
-  <meta property="twitter:image" content='<?php echo $presignedUrl; ?>'>
+  <?php if (!empty($presignedUrl)) {
+      echo '<meta property="twitter:image" content="'.$presignedUrl.'">';
+    }
+  ?>
 
   <!-- Configures website for iOS home screen -->
   <link rel="apple-touch-icon-precomposed" href="images/icon.png"/>

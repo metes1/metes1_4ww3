@@ -38,10 +38,10 @@
         echo "<div id=uploadSuccess><b>Success:</b>The store has successfully been submitted to Bookshopper!</div>";
         unset($_SESSION["uploadSuccess"]);
       }
-      //display a failure message if session indicates an error uploading
+      //display error message, if there was a connection or some other server error
       if (isset($_SESSION["upload_err"])) {
-        echo "<div id=uploadFailure><b>Error:</b>".$_SESSION["upload_err"]."</div>";
-        unset($_SESSION["upload_err"]);
+        echo "<div id=uploadFailure><b>Error:</b>The store has successfully been submitted to Bookshopper!</div>";
+        unset($_SESSION["uploadSuccess"];
       }
       //set inital form values to empty or get prefilled values from session (if they exist)
       $objName = (isset($_SESSION["uploadVals"]["name"]) ? $_SESSION["uploadVals"]["name"] : "");
