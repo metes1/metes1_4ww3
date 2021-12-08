@@ -16,10 +16,10 @@
     // Keep track if email is in database already
     $emailUsed = false;
 
-    if (isset($_POST["regUser"])) { //if user clicks submit form
+    if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST["regUser"])) { //if user clicks submit form
 
-      // trim extra whitespace at the end of input, remove backslashes, and special characters
-      function test_input($input) {
+      // trim extra whitespace at the end of input, remove backslashes
+      function clean_input($input) {
         $input = trim($input);
         $input = stripslashes($input);
         $input = htmlspecialchars($input);
@@ -38,19 +38,19 @@
         $fnameErr = "First name cannot be empty";
         $regErrors = true;
       } else { //if not empty, use test_input to remove any uneeded characters (extra space, ect. )
-        $firstName = test_input($firstName);
+        $firstName = clean_input($firstName);
       }
       if (empty($lastName)) {
         $lnameErr = "Last name cannot be empty";
         $regErrors = true;
       } else {
-        $lastName = test_input($lastName);
+        $lastName = clean_input($lastName);
       }
       if (empty($email)) {
         $emailErr = "Email cannot be empty";
         $regErrors = true;
       } else {
-        $email = test_input($email);
+        $email = clean_input($email);
         //use php function to validate email
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
           $emailErr = "Email format is incorrect";
@@ -87,7 +87,7 @@
           $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           // Check if email already exists in database, account emails must be unique
-          $stmt = $conn->prepare("SELECT * FROM user WHERE email=?"); //prepare sql statement
+          $stmt = $conn->prepare("SELECT * FROM `user` WHERE `email` = ?"); //prepare sql statement
           $stmt->execute([$email]);
           $result = $stmt->fetch();
           $stmt = null;
@@ -97,7 +97,8 @@
           }
           if (!$emailUsed) { //if email doesn't already exist, we can input the new user
             $salt = bin2hex(random_bytes(20)); //salt password
-            $regUserQuery = "INSERT INTO user (email, firstName, lastName, salt, passHash) VALUES (?, ?, ?, ?, SHA2(CONCAT(?, salt),0))";
+            $regUserQuery = "INSERT INTO `user` (`email`, `firstName`, `lastName`, `salt`, `passHash`)
+              VALUES (?, ?, ?, ?, SHA2(CONCAT(?, `salt`),0))";
             $stmt = $conn->prepare($regUserQuery);
             $stmt->execute([$email, $firstName, $lastName, $salt, $password]);
             $stmt = null;

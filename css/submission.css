@@ -137,6 +137,21 @@ input[type=number]:out-of-range {
   color: red;
 }
 
+#uploadSuccess {
+  width: 100%;
+  color: darkgreen;
+  background-color: #D0FBD1;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
+#uploadSuccess b {
+  color: darkgreen;
+}
+
 /* Resizes the submission form container to fill the whole width of the
    screen if the screen is small. Labels go above input boxes instead of beside.
 */

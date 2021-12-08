@@ -1,7 +1,5 @@
 // Functions for embedding live maps onto both the results page and the individual object page
-// Data is hardcoded in for now
 
-// Initialize the map
 // Code slightly modified from https://leafletjs.com/examples/quick-start/
 
 // Initializes a map with the given inputs
@@ -23,18 +21,17 @@ function initMap(mapName, lat, lon, zoom) {
 }
 
 // Create a map for results page
-// Information hardcoded for now
 function loadResultsMap(data) {
   var resultsMap;
-  console.log(data);
+
   if (data.length == 0) { // no data
     // Initialize map with default values, if data is empty
-    resultsMap = initMap("map", 43.25743, -79.87747, 10);
+    resultsMap = initMap("map", 43.25743, -79.87747, 13);
   } else {
-    // Initialize map with first result value, this will be the center of map
-    resultsMap = initMap("map", data[0]["latitude"], data[0]["longitude"], 13);
-    for (i=0; i < data.length; i++) {
-      let marker1 = L.marker([data[i]["latitude"], data[i]["longitude"]]).addTo(resultsMap);
+    // Initialize map with first store result , as the center point
+    resultsMap = initMap("map", data[0]["latitude"], data[0]["longitude"], 12);
+    for (i=0; i < data.length; i++) { //add a marker for each location
+      let marker1 = L.marker([parseFloat(data[i]["latitude"]), parseFloat(data[i]["longitude"])]).addTo(resultsMap);
       let link = "<a href=\"./individual_sample.php?storeid=" + data[i]["id"] + "\"><b>" + data[i]["name"] + "</b></a>";
       marker1.bindPopup(link);
     }

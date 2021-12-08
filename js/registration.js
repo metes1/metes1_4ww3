@@ -1,14 +1,15 @@
 // Validates registration form
 function validateRegistration(form) {
-  let fname = form["fname"];
+  let fname = form["fname"]
   let lname = form["lname"];
   let email = form["email"];
   let password = form["password"];
   let passConfirm = form["passConfirm"];
   let terms = form["terms"];
+  console.log(fname);
 
   // Check if first name field is empty
-  if (fname.value == "") {
+  if (fname.value.trim() == "") {
     // Display error message and indicate invalid field, return false
     invalidField(fname);
     document.getElementById("error-fname").innerHTML = "First name cannot be empty";
@@ -20,7 +21,7 @@ function validateRegistration(form) {
   }
 
   // Check if last name field is empty
-  if (lname.value == "") {
+  if (lname.value.trim() == "") {
     // Display error message and indicate invalid field, return false
     invalidField(lname);
     document.getElementById("error-lname").innerHTML = "Last name cannot be empty";
@@ -32,7 +33,7 @@ function validateRegistration(form) {
   }
 
   // Check if email field is empty
-  if (email.value == "") {
+  if (email.value.trim() == "") {
     invalidField(email);
     document.getElementById("error-email").innerHTML = "Email cannot be empty";
     return false;
@@ -98,7 +99,7 @@ function validField(field) {
 
 // Validates email, ensures it is formatted correctly
 function validateEmail(emailInput) {
-  let regEx = /^([a-zA-z0-9_\.\-])+\@(([a-zA-z0-9\-])+\.)+([a-zA-z0-9]{2,})+$/;
+  let regEx = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,})+$/;
   return regEx.test(emailInput);
 }
 

@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +28,7 @@
     <div class="search-container">
       <h2>Search for bookstores</h2>
       <hr>
-      <!-- When submitted, redirected to results page, results_sample.php -->
+      <!-- When submitted, redirect to results page: results_sample.php -->
       <form class="search animate__animated animate__fadeIn" method="get" action="results_sample.php">
         <!-- Star rating search drop down-->
         <select id="star" name="star">

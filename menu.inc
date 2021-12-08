@@ -9,15 +9,23 @@
       <li class="nav-item">
         <a href="search.php" class="nav-link">Search</a>
       </li>
-      <li class="nav-item">
-        <a href="submission.php" class="nav-link">Submit a Location</a>
-      </li>
-      <li class="nav-item">
+      <?php
+        if (isset($_SESSION["loggedIn"])) {
+          echo '<li class="nav-item">
+                  <a href="submission.php" class="nav-link">Submit a Location</a>
+                </li>
+                <li class="nav-item">
+                  <a id="logoutnav" href="logout.php" class="nav-link">Log Out</a>
+                </li>';
+        } else {
+          echo '<li class="nav-item">
         <a id="loginnav" href="login.php" class="nav-link">Log In</a>
       </li>
       <li class="nav-item">
         <a id="signupnav" href="registration.php" class="nav-link">Sign Up</a>
-      </li>
+      </li>';
+        }
+      ?>
     </ul>
     <!-- Hamburger menu, not displayed unless screen is small enough -->
     <div class="hamburger">

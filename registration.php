@@ -1,3 +1,12 @@
+<?php 
+  session_start();
+  //logged in users don't have access to registration page
+  if (isset($_SESSION["loggedIn"])) {
+    //redirect to main page
+    header("Location: index.php");
+    exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,42 +30,43 @@
       <hr>
       <!-- All inputs are required, user cannot proceed without filling out all
         input boxes and checking the checkbox -->
-      <!-- Disable HTML5/CSS automatic validation, will use javascript instead -->
+      <!-- Disable HTML5/CSS automatic validation, will use javascript and php instead -->
+      <!-- If javascript is turned off php will validate as a fall back -->
       <!-- Send submitted form data to the same page -->
-      <!-- Server side registration -->
       <?php include("regSubmit.php"); ?>
       <form name="regForm" onsubmit="return validateRegistration(this)" method="post" action="registration.php" novalidate>
+        <!-- Form displays errors and prefilled form, uses htmlspecialchars converts predefined characters to HTML entities -->
+        <!-- htmlspecialchars prevents users from entering values that change the html on the page -->
         <div class="formItem">
           <label for="fname">First Name</label>
-          <input type="text" placeholder="Enter your first name" id="fname" name="fname" value="<?php echo $firstName;?>">
-          <div class="error" id="error-fname"><?php echo $fnameErr?></div>
+          <input type="text" placeholder="Enter your first name" id="fname" name="fname" value="<?php echo htmlspecialchars($firstName);?>">
+          <div class="error" id="error-fname"><?php echo htmlspecialchars($fnameErr);?></div>
         </div>
         <div class="formItem">
           <label for="lname">Last Name</label>
-          <input type="text" placeholder="Enter your last name" id="lname" name="lname" value="<?php echo $lastName;?>">
-          <div class="error" id="error-lname"><?php echo $lnameErr?></div>
+          <input type="text" placeholder="Enter your last name" id="lname" name="lname" value="<?php echo htmlspecialchars($lastName);?>">
+          <div class="error" id="error-lname"><?php echo htmlspecialchars($lnameErr);?></div>
         </div>
         <div class="formItem">
           <label for="email">Email</label>
-          <input type="email" placeholder="Enter your email address" id="email" name="email" value="<?php echo $email;?>">
-          <div class="error" id="error-email"><?php echo $emailErr?></div>
+          <input type="email" placeholder="Enter your email address" id="email" name="email" value="<?php echo htmlspecialchars($email);?>">
+          <div class="error" id="error-email"><?php echo htmlspecialchars($emailErr);?></div>
         </div>
         <div class="formItem">
           <label for="password">Password</label>
-          <input type="password" placeholder="Enter your password (must be at least 6 characters)" name="password" id="password" placeholder="Password" value="<?php echo $password;?>">
-          <div class="error" id="error-password"><?php echo $passErr?></div>
+          <input type="password" placeholder="Enter your password (must be at least 6 characters)" name="password" id="password" placeholder="Password" value="<?php echo htmlspecialchars($password);?>">
+          <div class="error" id="error-password"><?php echo htmlspecialchars($passErr);?></div>
         </div>
         <div class="formItem">
           <label for="passConfirm">Confirm Password</label>
-          <input type="password" placeholder="Re-enter your password" name="passConfirm" id="passConfirm" placeholder="Confirm Password" value="<?php echo $passConfirm;?>">
-          <div class="error" id="error-passConfirm"><?php echo $passConfirmErr?></div>
+          <input type="password" placeholder="Re-enter your password" name="passConfirm" id="passConfirm" placeholder="Confirm Password" value="<?php echo htmlspecialchars($passConfirm);?>">
+          <div class="error" id="error-passConfirm"><?php echo htmlspecialchars($passConfirmErr);?></div>
         </div>
         <div id="checkTerms">
           <!-- If checkbox was checked, stay checked (if errors in php valivation, values entered remain) -->
           <input type="checkbox" name="terms" id="terms" value="terms" <?php if (isset($terms)) echo "checked";?> >
-          <!-- href not properly assigned yet -->
-          <label for="terms">I agree to the <a href="registration.html">terms of service</a></label>
-          <div class="error" id="error-terms"><?php echo $termsErr?></div>
+          <label for="terms">I agree to the terms of service</label>
+          <div class="error" id="error-terms"><?php echo htmlspecialchars($termsErr);?></div>
         </div>
         <input type="submit" value="Sign Up" name="regUser">
       </form>

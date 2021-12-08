@@ -44,11 +44,11 @@ img .mainimage {
   margin-bottom: 10px;
 }
 
-#reviewsLink {
+#reviewsLink, #reviewModal a {
   text-decoration: none;
 }
 
-#reviewsLink:hover {
+#reviewsLink:hover, #reviewModal a:hover {
   text-decoration: underline;
 }
 
@@ -83,6 +83,12 @@ img .mainimage {
   height: 100%;
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
+}
+
+/* Styling for error messages*/
+.error {
+  font-size: small;
+  color: red;
 }
 
 /* Style the modal popup */

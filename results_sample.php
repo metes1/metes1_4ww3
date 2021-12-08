@@ -1,5 +1,9 @@
+<?php 
+  session_start();
+  //Get results based on the search query, dynamically generate the results page-->
+  include("searchSubmit.php");
+?>
 <!DOCTYPE html>
-<?php include("searchSubmit.php"); ?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -42,12 +46,14 @@
             if ($arrLen == 0) { //if there are no results, display a message
               echo '<p id="noResults">No results found</p>';
             }
+            //for every result, create a card for that result
             for ($i = 0; $i < $arrLen; $i++) {
               echo '<a href="individual_sample.php?storeid='.$searchResults[$i]["id"].'">';
               echo '<div class="result-card">';
-              echo '<img class="result" src="images/kingwestbooks.jpg" alt="$searchResults[$i][\"name\"]">';
+              echo '<img class="result" src="images/kingwestbooks.jpg" alt="'.$searchResults[$i]["name"].'">';
               echo '<div class= "resultinfo">';
               echo '<h3>'.($i + 1).'. '.$searchResults[$i]["name"].'</h3>';
+              echo '<span>'.$searchResults[$i]["rating"].'  </span>';
               //add star icons based on avg rating
               //round avg rating to nearest .5 or .0
               $roundRating = round($searchResults[$i]["rating"]/0.5) * 0.5;
@@ -66,10 +72,11 @@
                   $roundRating -= 0.5;
                 }
               }
+              //Display the total number of reviews
               if ($searchResults[$i]["reviewCount"] == 1) {
-                echo '<span>'.$searchResults[$i]["reviewCount"].' Review</span>';
+                echo "<span>{$searchResults[$i]['reviewCount']} Review</span>";
               } else {
-                echo '<span>'.$searchResults[$i]["reviewCount"].' Reviews</span>';
+                echo "<span>{$searchResults[$i]['reviewCount']} Reviews</span>";
               }
               echo '</div>';
               echo '</div>';
