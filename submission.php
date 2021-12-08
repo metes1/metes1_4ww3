@@ -38,6 +38,11 @@
         echo "<div id=uploadSuccess><b>Success:</b>The store has successfully been submitted to Bookshopper!</div>";
         unset($_SESSION["uploadSuccess"]);
       }
+      //display a failure message if session indicates an error uploading
+      if (isset($_SESSION["upload_err"])) {
+        echo "<div id=uploadFailure><b>Error:</b>".$_SESSION["upload_err"]."</div>";
+        unset($_SESSION["upload_err"]);
+      }
       //set inital form values to empty or get prefilled values from session (if they exist)
       $objName = (isset($_SESSION["uploadVals"]["name"]) ? $_SESSION["uploadVals"]["name"] : "");
       $objDesc = (isset($_SESSION["uploadVals"]["desc"]) ? $_SESSION["uploadVals"]["desc"] : "");
@@ -45,11 +50,12 @@
       $objLon = (isset($_SESSION["uploadVals"]["lon"]) ? $_SESSION["uploadVals"]["lon"] : "");
 
       //get errors from session data if they exist, save to variables to display in form
-      $objimageErr = $objvideoErr = "";
       $objnameErr = (isset($_SESSION["uploadErrs"]["name"]) ? $_SESSION["uploadErrs"]["name"] : "");
       $objdescErr = (isset($_SESSION["uploadErrs"]["desc"]) ? $_SESSION["uploadErrs"]["desc"] : "");
       $objlatErr = (isset($_SESSION["uploadErrs"]["lat"]) ? $_SESSION["uploadErrs"]["lat"] : "");
       $objlonErr = (isset($_SESSION["uploadErrs"]["lon"]) ? $_SESSION["uploadErrs"]["lon"] : "");
+      $objImageErr1 = (isset($_SESSION["uploadErrs"]["image1"]) ? $_SESSION["uploadErrs"]["image1"] : "");
+      $objImageErr2 = (isset($_SESSION["uploadErrs"]["image2"]) ? $_SESSION["uploadErrs"]["image2"] : "");
 
       //After session values are saved in variables, unset the session variables
       if (isset($_SESSION["uploadVals"])) unset($_SESSION["uploadVals"]);
@@ -61,7 +67,7 @@
            read that a field is required using the required attribute in the input tag
       -->
       <p aria-hidden="true"><b>*</b> Required field</p>
-      <form method="post" action="objSubmit.php">
+      <form method="post" action="objSubmit.php" enctype="multipart/form-data">
         <!-- Client-side form validation added using HTML5/CSS -->
         <!-- PHP validation is used as a fallback if client side doesn't work -->
         <div class="row">
@@ -122,18 +128,8 @@
           </div>
           <div class="col-75">
             <!-- Specify which types of files can be accepted -->
-            <input type="file" id="image" name="image" accept=".png, .jpg, .jpeg, .gif, .svg">
-            <div class="error" id="error-image"><?php echo htmlspecialchars($objimageErr);?></div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="video">Upload a Video</label>
-          </div>
-          <div class="col-75">
-            <!-- Specify which types of files can be accepted -->
-            <input type="file" id="video" name="video" accept=".mp4, .mov, .avi, .webm, .m4v">
-            <div class="error" id="error-video"><?php echo htmlspecialchars($objvideoErr);?></div>
+            <input type="file" id="image" name="image" accept="image/png, image/jpg, image/jpeg">
+            <div class="error" id="error-image"><?php echo htmlspecialchars($objImageErr1.$objImageErr2);?></div>
           </div>
         </div>
         <div class="row">

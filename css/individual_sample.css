@@ -19,23 +19,19 @@
   text-align: left;
 }
 
+/* Image takes up 100% of the width of image-container */
+img {
+  width: 100%;
+  border-radius: 5px;
+  object-fit: cover; 
+}
+
 .image-container {
   width: 80%;
   margin-right: auto;
   margin-left: auto;
 }
 
-/* Image takes up 100% of the width of image-container */
-picture .mainimage {
-  width: 100%;
-  border-radius: 5px;
-}
-
-/* Image takes up 100% of the width of image-container */
-img .mainimage {
-  width: 100%;
-  border-radius: 5px;
-}
 
 .obj-info {
   float: left;
@@ -216,7 +212,7 @@ hr {
 /* Map section takes up 50% of width */
 .obj-map {
   float: left;
-  width: 50%;
+  width: 100%;
 }
 
 #map {
@@ -231,7 +227,7 @@ hr {
 }
 
 /* Video container takes up half of the width of the section, placed beside map container */
-.video {
+/*.video {
   width:50%;
   float: left;
   padding-left: 30px;
@@ -240,7 +236,7 @@ hr {
 .video video {
   width: 100%;
   height: 300px;
-}
+}*/
 
 /* When screen is small, elements are expanded to 100% width and stacked on top of each other */
 @media screen and (max-width: 700px) {
@@ -300,17 +296,16 @@ hr {
   }
 
   /* Expanded to 100% of the obj-container space */
-  .video {
+/*  .video {
     width: 100%;
     margin-top: 20px;
     padding: 0;
-
-  }
+  }*/
   /* Expanded to 100% of the obj-container space */
-  .video video {
+/*  .video video {
     margin: 0;
     width: 100%;
-  }
+  }*/
 
   #noReviews {
     text-align: center;

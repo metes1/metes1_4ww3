@@ -14,22 +14,21 @@ CREATE TABLE `user` (
 
 -- Table structure for table `store`
 CREATE TABLE `store` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `description` varchar(1000) DEFAULT NULL,
   `rating` decimal(2,1) NOT NULL,
   `latitude` decimal(10,8) NOT NULL,
   `longitude` decimal(11,8) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `video` varchar (255) DEFAULT NULL,
+  `image` varchar(2048) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
 -- Table structure for table `review`
 CREATE TABLE `review` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `userId` int(11) NOT NULL,
-  `storeId` int(11) NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userId` int NOT NULL,
+  `storeId` int NOT NULL,
   `rating` tinyint(4) NOT NULL,
   `reviewText` text DEFAULT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),

@@ -1,10 +1,15 @@
 <?php 
   session_start();
 
+  require "../s3_guide/vendor/autoload.php";
+  use Aws\S3\S3Client;
+  use Aws\S3\Exception\S3Exception;
+
   //inital data variables
   $storeData = "";
   $reviewData = "";
   $storeId = "";
+  $presignedUrl = "";
   try {
     if (isset($_GET["storeid"])) { //only connect to database if store id and name variables are set
       $storeId = intval($_GET["storeid"]); //ensure it is int val for database search
@@ -46,6 +51,39 @@
     //Errors terminate script
     die("Error!: " . $e->getMessage());
   }
+
+  //only attempt to get image, if the store has an image on record
+  if ($storeData["image"] != null or $storeData != "") {
+    try {
+      //db configurations
+      require_once "s3config.php";
+      //get image name from database result
+      $keyPath = $storeData["image"];
+
+      // Instantiate an Amazon S3 client
+      $s3Client = new S3Client(
+        array(
+          'version' => 'latest',
+          'region'  => 'us-east-2',
+          'credentials' => array(
+          'key'    => $key,
+          'secret' => $secret
+          ),
+        )
+      );
+
+      //get image
+      $getImg = $s3Client->getCommand('GetObject', [
+        'Bucket' => $bucketName,
+        'Key'    => $keyPath
+      ]);
+
+      $request = $s3Client->createPresignedRequest($getImg, '+20 minutes');
+      $presignedUrl = (string)$request->getUri();
+    } catch (Exception $e){
+      $_SESSION["store_msg"] = "Couldn't get store image.";
+    }
+  }
 ?>
 <!DOCTYPE html>
 <!-- The language code is English -->
@@ -84,14 +122,14 @@
   <meta property="og:type" content="Website">
   <meta property="og:site_name" content="Bookshopper">
   <meta property="og:url" content="https://4ww3seda.live/bookshopper/individual_sample.php/?storeid=<?php echo $storeData['id'];?>"
-  <meta property="og:image" content="http://18.222.242.154/home/images/kingwestbooks.jpg">
+  <meta property="og:image" content='<?php echo $presignedUrl; ?>'>
   <meta property="og:description" content="<?php echo $storeData['description'];?>">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta property="twitter:title" content="<?php echo $storeData['name'];?>">
   <meta property="twitter:description" content="<?php echo $storeData['description'];?>">
-  <meta property="twitter:image" content="http://18.222.242.154/home/images/kingwestbooks.jpg">
+  <meta property="twitter:image" content='<?php echo $presignedUrl; ?>'>
 
   <!-- Configures website for iOS home screen -->
   <link rel="apple-touch-icon-precomposed" href="images/icon.png"/>
@@ -114,14 +152,10 @@
       <hr>
       <!-- Images of the bookstore -->
       <div class="image-container">
-        <picture class="mainimage">
-          <!-- When screen width is >= 800px kingwestbooks.jpg is used, this picture is higher quality (more pixels) -->
-          <source media="(min-width: 800px)" srcset="images/kingwestbooks.jpg">
-          <!-- When screen width is >= 450px kingwestbooksSmall.jpg is used, this is a lower resolution -->
-          <source media="(min-width: 450px)" srcset="images/kingwestbooksSmall.jpg">
-          <!-- img tag is used as a fallback option (for older browsers) -->
-          <img class="mainimage" src="images/kingwestbooks.jpg" alt="<?php echo $storeData['name'];?>" itemprop="photo">
-        </picture>
+        <?php if (!empty($presignedUrl)) {
+            echo '<img class="mainimage" src="'.$presignedUrl.'" alt="'.$storeData['name'].'" itemprop="photo">';
+          }
+        ?>
       </div>
 
       <!-- Contains the description and overall star rating of bookstore -->
@@ -212,12 +246,6 @@
         <div class="obj-map" itemscope itemtype="https://schema.org/Place">
           <!-- Leaflet Map -->
           <div id="map"></div>
-        </div>
-         <!--The specific video used is just temporary. The controls attribute adds basic video controls such as play, pause, and volume.-->
-        <div class="video">
-          <video controls>
-            <source src="images/bookvideo.mp4" type="video/mp4">
-          </video>
         </div>
       </div>
 

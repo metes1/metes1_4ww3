@@ -50,7 +50,6 @@
             for ($i = 0; $i < $arrLen; $i++) {
               echo '<a href="individual_sample.php?storeid='.$searchResults[$i]["id"].'">';
               echo '<div class="result-card">';
-              echo '<img class="result" src="images/kingwestbooks.jpg" alt="'.$searchResults[$i]["name"].'">';
               echo '<div class= "resultinfo">';
               echo '<h3>'.($i + 1).'. '.$searchResults[$i]["name"].'</h3>';
               echo '<span>'.$searchResults[$i]["rating"].'  </span>';
