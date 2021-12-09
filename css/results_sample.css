@@ -41,14 +41,14 @@
   margin-bottom: 5px;
 }
 
-.result-card img {
+/*.result-card img {
   width: 30%;
   float: left;
-}
+}*/
 
 .resultinfo {
   font-size: 100%;
-  width: 70%;
+  width: 100%;
   float: left;
   padding: 10px;
 }
