@@ -13,7 +13,7 @@ Below I list the main places where the new tasks for part three were implemented
 
 1) Search form (search.php)
     - Search form submits the search query and gets the results from the database (searchSubmit.php)
-    - Dynamically generated results page (results_sample.php)
+    - Dynamically generates results page (results_sample.php)
 
 2) Dynamically generated results page (results_sample.php, searchSubmit.php)
     - Results are dynamically generated based on the search query submitted from the search form
@@ -25,11 +25,11 @@ Below I list the main places where the new tasks for part three were implemented
 
 4) Object submission page (submission.php, objSubmit.php)
     - Object submission page submits user's data to php script, performs validation and adds to database (objSubmit.php)
-    - Only logged in users can access page (if session shows user isn't logged in, the submission link does not appear and also the submission page redirects to index.php if logged out user tries to access by url)
+    - Only logged in users can access page (if session shows user isn't logged in, the submission item does not appear in the menu. Also the submission page redirects to login page if logged out user tries to access it by url.
     -Users can upload images, they are stored using Amazon's S3 bucket
 
 5) User registration page (registration.php, regSubmit.php)
-    -  Server-side validation and inserts new user into database (regSubmit.php)
+    -  Server-side validation, then inserts new user into database (regSubmit.php)
 
 
 
