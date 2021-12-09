@@ -78,48 +78,52 @@
 
     //if there are no errors int form inputs and file uploads
     //upload files to s3 and insert data into db
-    if (!$errors && in_array($filetype, $allowed)) { 
+    if (!$errors) { 
       //db configurations
       require_once "config.php";
       //s3 configurations
       require_once "s3conf.php";
-      $keyName = "";
-      $pathInS3 = "";
-
-      try { //connect to AWS S3
-        // Instantiate an Amazon S3 client
-        $s3Client = new S3Client(
-          array(
-            'version' => 'latest',
-            'region'  => 'us-east-2',
-            'credentials' => array(
-              'key'    => $key,
-              'secret' => $secret
+      //keyname wil be null in db if file is not uploaded
+      $keyName = null;
+      
+      //if a file was uploaded and there are no errors, add it to bucket
+      //this is not a required field, so we have to check it
+      if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+        try { //connect to AWS S3
+          // Instantiate an Amazon S3 client
+          $s3Client = new S3Client(
+            array(
+              'version' => 'latest',
+              'region'  => 'us-east-2',
+              'credentials' => array(
+                'key'    => $key,
+                'secret' => $secret
+              )
             )
-          )
-        );
+          );
 
-        //generate a random name by combining a unique ID based on the microtime and 
-        // the MD5 hash of the original file name, this is to ensure we don't overwrite an existing file
-        $keyName = 'images/'.uniqid().md5(basename($filename)).'.'.$ext;
+          //generate a random name by combining a unique ID based on the microtime and 
+          // the MD5 hash of the original file name, this is to ensure we don't overwrite an existing file
+          $keyName = 'images/'.uniqid().md5(basename($filename)).'.'.$ext;
 
-        //upload the image to s3
-        try {
-          $s3Client->putObject([
-            'Bucket' => $bucketName,
-            'Key'    => $keyName,
-            'SourceFile'   => $_FILES["image"]["tmp_name"]
-          ]);
+          //upload the image to s3
+          try {
+            $s3Client->putObject([
+              'Bucket' => $bucketName,
+              'Key'    => $keyName,
+              'SourceFile'   => $_FILES["image"]["tmp_name"]
+            ]);
+          } catch(Exception $e) {
+            $_SESSION["upload_err"] = "Store failed to upload, connection or server error";
+            header("Location: submission.php");
+            exit();
+          }
+
         } catch(Exception $e) {
           $_SESSION["upload_err"] = "Store failed to upload, connection or server error";
           header("Location: submission.php");
           exit();
         }
-
-      } catch(Exception $e) {
-        $_SESSION["upload_err"] = "Store failed to upload, connection or server error";
-        header("Location: submission.php");
-        exit();
       }
 
       try {
