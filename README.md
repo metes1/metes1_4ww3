@@ -1,11 +1,9 @@
 ## About
 Course name: Web Computing and Web Systems <br>
-Group name: metes1_4ww3 <br>
-Member 1: Seda Mete
 
 ## Link to Server
 Link to the deployed server (with SSL enabled):
-~https://4ww3seda.live/bookshopper~ (Link no longer active)
+(Link no longer active)
 
 ## Notes
 README.txt contains the additional notes to marker.<br>
